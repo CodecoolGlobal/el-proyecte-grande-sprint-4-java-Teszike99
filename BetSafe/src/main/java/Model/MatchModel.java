@@ -2,22 +2,22 @@ package Model;
 
 import java.time.LocalDate;
 
-public class Match {
-    private LocalDate matchDate;
+public class MatchModel {
+    private String matchDate;
     private String players;
     private double winnerOdds;
     private double loseOdds;
-    private BettingOfficeEnum bettingOffice;
+    private String bettingOffice;
 
-    public Match(LocalDate matchDate, String players, double winnerOdds, double loseOdds, BettingOfficeEnum bettingOffice) {
+    public MatchModel(String matchDate, String players, String winnerOdds, String loseOdds) {
         this.matchDate = matchDate;
         this.players = players;
-        this.winnerOdds = winnerOdds;
-        this.loseOdds = loseOdds;
+        this.winnerOdds = Double.parseDouble(winnerOdds);
+        this.loseOdds = Double.parseDouble(loseOdds);
         this.bettingOffice = bettingOffice;
     }
 
-    public LocalDate getMatchDate() {
+    public String getMatchDate() {
         return matchDate;
     }
 
@@ -33,7 +33,7 @@ public class Match {
         return loseOdds;
     }
 
-    public BettingOfficeEnum getBettingOffice() {
+    public String getBettingOffice() {
         return bettingOffice;
     }
 }
