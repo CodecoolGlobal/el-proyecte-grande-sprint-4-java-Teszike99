@@ -1,9 +1,9 @@
 package Dao;
 
-import Model.BettingOffice;
+import Model.BettingOfficeEnum;
 
 import java.util.List;
 
 public interface MatchDao {
-    List<Math> getAll(BettingOffice bettingOffice);
+    List<Math> getAll(BettingOfficeEnum bettingOffice);
 }

@@ -7,9 +7,9 @@ public class Match {
     private String players;
     private double winnerOdds;
     private double loseOdds;
-    private BettingOffice bettingOffice;
+    private BettingOfficeEnum bettingOffice;
 
-    public Match(LocalDate matchDate, String players, double winnerOdds, double loseOdds, BettingOffice bettingOffice) {
+    public Match(LocalDate matchDate, String players, double winnerOdds, double loseOdds, BettingOfficeEnum bettingOffice) {
         this.matchDate = matchDate;
         this.players = players;
         this.winnerOdds = winnerOdds;
@@ -33,7 +33,7 @@ public class Match {
         return loseOdds;
     }
 
-    public BettingOffice getBettingOffice() {
+    public BettingOfficeEnum getBettingOffice() {
         return bettingOffice;
     }
 }
