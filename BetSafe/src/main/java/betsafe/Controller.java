@@ -2,26 +2,27 @@ package betsafe;
 
 
 import betsafe.model.BettingOfficeModel;
-import betsafe.service.BettingOfficeStorage;
+import betsafe.service.OfficeFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
 @RequestMapping("/")
 public class Controller {
-    private final BettingOfficeStorage bettingOfficeStorage;
+    private final OfficeFactory officeFactory;
 
     @Autowired
-    public Controller(BettingOfficeStorage bettingOfficeStorage) {
-        this.bettingOfficeStorage = bettingOfficeStorage;
+    public Controller(OfficeFactory officeFactory) {
+        this.officeFactory = officeFactory;
     }
 
     @GetMapping(value = "/index")
-    public List<BettingOfficeModel> getOfficeStorage(){
-        return bettingOfficeStorage.getOffices();
+    public BettingOfficeModel getOfficeStorage() throws IOException {
+        return officeFactory.getBettingOffice();
     }
 }

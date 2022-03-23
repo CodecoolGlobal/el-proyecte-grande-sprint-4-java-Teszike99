@@ -12,12 +12,9 @@ import java.util.List;
 public class OfficeFactory {
     private MatchDaoCsv matchDaoCsv = new MatchDaoCsv();
 
-    public BettingOfficeModel createBettingOffice() throws IOException {
+    public BettingOfficeModel getBettingOffice() throws IOException {
         List<MatchModel> matches = matchDaoCsv.convert("MegaGame.csv");
-        return null;
-    }
-
-    public MatchModel createMatches(){
-        return null;
+        BettingOfficeModel office = new BettingOfficeModel(matches.get(0).getBettingOffice(), matches);
+        return office;
     }
 }
