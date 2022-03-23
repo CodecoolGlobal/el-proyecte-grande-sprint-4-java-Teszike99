@@ -1,9 +1,8 @@
-package com.example.BetSafe;
+package betsafe;
 
 
-import Model.BettingOfficeModel;
-import Service.BettingOfficeStorage;
-import Service.OfficeFactory;
+import betsafe.model.BettingOfficeModel;
+import betsafe.service.BettingOfficeStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
-package Service;
+package betsafe.service;
 
-import Model.BettingOfficeModel;
+import betsafe.model.BettingOfficeModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package Model;
+package betsafe.model;
 
 public enum BettingOfficeEnum {
     MEGA_BET,

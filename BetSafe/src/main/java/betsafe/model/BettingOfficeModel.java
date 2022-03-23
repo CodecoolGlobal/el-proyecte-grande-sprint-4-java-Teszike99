@@ -1,4 +1,4 @@
-package Model;
+package betsafe.model;
 
 import java.util.List;
 

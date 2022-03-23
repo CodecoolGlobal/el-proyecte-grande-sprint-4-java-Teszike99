@@ -1,6 +1,4 @@
-package Model;
-
-import java.time.LocalDate;
+package betsafe.model;
 
 public class MatchModel {
     private String matchDate;

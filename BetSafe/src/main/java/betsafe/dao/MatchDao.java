@@ -1,6 +1,6 @@
-package Dao;
+package betsafe.dao;
 
-import Model.BettingOfficeEnum;
+import betsafe.model.BettingOfficeEnum;
 
 import java.util.List;
 

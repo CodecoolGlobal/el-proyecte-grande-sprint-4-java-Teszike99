@@ -1,14 +1,13 @@
-package CsvDao;
+package betsafe.dao;
 
-import Model.MatchModel;
-import Service.OfficeFactory;
+import betsafe.model.MatchModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileReader {
+public class MatchDaoCsv {
 
     public List<MatchModel> convert(String path) throws IOException {
         String line = "";

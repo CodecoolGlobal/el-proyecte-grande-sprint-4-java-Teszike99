@@ -1,9 +1,8 @@
-package Service;
+package betsafe.service;
 
-import CsvDao.FileReader;
-import Model.BettingOfficeModel;
-import Model.MatchModel;
-import org.springframework.context.annotation.Bean;
+import betsafe.dao.MatchDaoCsv;
+import betsafe.model.BettingOfficeModel;
+import betsafe.model.MatchModel;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -11,10 +10,10 @@ import java.util.List;
 
 @Service
 public class OfficeFactory {
-    private FileReader fileReader = new FileReader();
+    private MatchDaoCsv matchDaoCsv = new MatchDaoCsv();
 
     public BettingOfficeModel createBettingOffice() throws IOException {
-        List<MatchModel> matches = fileReader.convert("MegaGame.csv");
+        List<MatchModel> matches = matchDaoCsv.convert("MegaGame.csv");
         return null;
     }
 
