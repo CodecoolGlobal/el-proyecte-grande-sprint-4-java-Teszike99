@@ -30,9 +30,8 @@ public class Service {
 
                 for (MatchModel match : listOfSameMatches){
                     if(match != firstMatch){
-                        boolean firstCase = (match.getWinnerOdds() * firstMatch.getLoseOdds()) >= match.getWinnerOdds() + firstMatch.getLoseOdds();
-                        boolean secoundCase = (match.getLoseOdds() * firstMatch.getWinnerOdds()) >= match.getLoseOdds() + firstMatch.getWinnerOdds();
-                        if( firstCase || secoundCase ){
+                        boolean profitability = this.chechkIfProfitableMatchPair(firstMatch, match);
+                        if(profitability){
                             profitableMatchPair.add(firstMatch);
                             profitableMatchPair.add(match);
                         }
@@ -80,4 +79,16 @@ public class Service {
         }
         return differentOfficesSameMatches;
     }
+
+    public boolean chechkIfProfitableMatchPair(MatchModel firstMatch, MatchModel secoundMatch){
+        boolean firstCase = (secoundMatch.getWinnerOdds() * firstMatch.getLoseOdds()) >= secoundMatch.getWinnerOdds() + firstMatch.getLoseOdds();
+        boolean secoundCase = (secoundMatch.getLoseOdds() * firstMatch.getWinnerOdds()) >= secoundMatch.getLoseOdds() + firstMatch.getWinnerOdds();
+        if( firstCase || secoundCase ){
+         return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
+
