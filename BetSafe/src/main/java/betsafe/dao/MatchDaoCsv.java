@@ -18,12 +18,10 @@ public class MatchDaoCsv {
             BufferedReader br = new BufferedReader(new java.io.FileReader(mapping + path));
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                MatchModel matchModel = new MatchModel(values[1], values[2] + " ," + values[3], values[4], values[5]);
+                MatchModel matchModel = new MatchModel(values[1], values[2] + " ," + values[3], values[4], values[5], values[0]);
                 matches.add(matchModel);
             }
         }
         return matches;
     }
-
-
 }
