@@ -16,6 +16,6 @@ class MatchDaoCsvTest {
         MatchDaoCsv reader = new MatchDaoCsv();
         List<MatchModel> matches =  reader.convertFiles(new ArrayList<>(List.of("MegaGame.csv")));
         assertEquals(10, matches.size());
-        assertEquals(1.7, matches.get(1).getLoseOdds());
+        assertEquals(1.55, matches.get(6).getWinnerOdds());
     }
 }
