@@ -7,7 +7,7 @@ public class MatchModel {
     private double loseOdds;
     private String bettingOffice;
 
-    public MatchModel(String matchDate, String players, String winnerOdds, String loseOdds) {
+    public MatchModel(String matchDate, String players, String winnerOdds, String loseOdds, String bettingOffice) {
         this.matchDate = matchDate;
         this.players = players;
         this.winnerOdds = Double.parseDouble(winnerOdds);

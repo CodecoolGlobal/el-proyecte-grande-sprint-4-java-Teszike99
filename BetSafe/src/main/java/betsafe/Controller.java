@@ -6,6 +6,7 @@ import betsafe.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -21,9 +22,9 @@ public class Controller {
         this.officeFactory = officeFactory;
     }
 
-    @GetMapping(value = "/index")
-    public BettingOfficeModel getOfficeStorage() throws IOException {
-        return officeFactory.getBettingOffice();
+    @GetMapping(value = "/index/search_office")
+    public BettingOfficeModel getOfficeStorage(@RequestParam String searchedOffice) throws IOException {
+        return officeFactory.getBettingOffice(searchedOffice);
     }
 
     @GetMapping(value = "/index/profit-matches")
