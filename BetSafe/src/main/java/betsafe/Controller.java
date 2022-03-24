@@ -1,8 +1,8 @@
 package betsafe;
 
-
 import betsafe.model.BettingOfficeModel;
-import betsafe.service.OfficeFactory;
+import betsafe.model.MatchModel;
+import betsafe.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +14,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/")
 public class Controller {
-    private final OfficeFactory officeFactory;
+    private final Service officeFactory;
 
     @Autowired
-    public Controller(OfficeFactory officeFactory) {
+    public Controller(Service officeFactory) {
         this.officeFactory = officeFactory;
     }
 
     @GetMapping(value = "/index")
     public BettingOfficeModel getOfficeStorage() throws IOException {
         return officeFactory.getBettingOffice();
+    }
+
+    @GetMapping(value = "/index/profit-matches")
+    public List<List<MatchModel>> getProfitableMatchPairs() throws IOException {
+        return officeFactory.getProfitableMatchPairs();
     }
 }
