@@ -12,10 +12,10 @@ import java.util.List;
 public class Service {
     private final MatchDaoCsv matchDaoCsv = new MatchDaoCsv();
 
-    public BettingOfficeModel getBettingOffice() throws IOException {
-        List<MatchModel> matches = matchDaoCsv.convertFiles(new ArrayList<>(List.of("MegaGame.csv")));
-        BettingOfficeModel office = new BettingOfficeModel(matches.get(0).getBettingOffice(), matches);
-        return office;
+    public BettingOfficeModel getBettingOffice(String office) throws IOException {
+        List<MatchModel> matches = matchDaoCsv.convertFiles(new ArrayList<>(List.of(office)));
+        return new BettingOfficeModel(matches.get(0).getBettingOffice(), matches);
+
     }
 
     public List<List<MatchModel>> getProfitableMatchPairs() throws IOException {
