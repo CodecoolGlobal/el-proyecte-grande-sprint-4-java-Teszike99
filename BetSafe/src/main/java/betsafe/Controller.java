@@ -26,8 +26,8 @@ public class Controller {
         return officeFactory.getBettingOffice();
     }
 
-    @GetMapping(value = "/index/same-matches")
-    public List<List<MatchModel>> getSameMatches() throws IOException {
-        return officeFactory.getSameMatches();
+    @GetMapping(value = "/index/profit-matches")
+    public List<List<MatchModel>> getProfitableMatchPairs() throws IOException {
+        return officeFactory.getProfitableMatchPairs();
     }
 }
