@@ -18,9 +18,9 @@ public class Service {
 
     }
 
-    public List<List<MatchModel>> getProfitableMatchPairs() throws IOException {
-        List<List<MatchModel>> profitableMatchPairs = new ArrayList<List<MatchModel>>();
-        List<List<MatchModel>> differentOfficesSameMatches = this.getSameMatches();
+    public List<List<MatchModel>> getProfitableMatchPairs(List<String> offices) throws IOException {
+        List<List<MatchModel>> profitableMatchPairs = new ArrayList<>();
+        List<List<MatchModel>> differentOfficesSameMatches = this.getSameMatches(offices);
 
         while (differentOfficesSameMatches.size() != 0){
             List<MatchModel> listOfSameMatches = differentOfficesSameMatches.get(0);
@@ -30,7 +30,7 @@ public class Service {
 
                 for (MatchModel match : listOfSameMatches){
                     if(match != firstMatch){
-                        boolean profitability = this.chechkIfProfitableMatchPair(firstMatch, match);
+                        boolean profitability = this.checkIfProfitableMatchPair(firstMatch, match);
                         if(profitability){
                             profitableMatchPair.add(firstMatch);
                             profitableMatchPair.add(match);
@@ -47,9 +47,9 @@ public class Service {
     }
 
     //We can use later sport type argument to filter same matches
-    public List<List<MatchModel>> getSameMatches() throws IOException {
-        List<List<MatchModel>> differentOfficesSameMatches = new ArrayList<List<MatchModel>>();
-        List<MatchModel> matches = matchDaoCsv.convertFiles(new ArrayList<>(List.of("BetterBet.csv", "MegaGame.csv")));
+    public List<List<MatchModel>> getSameMatches(List<String> offices) throws IOException {
+        List<List<MatchModel>> differentOfficesSameMatches = new ArrayList<>();
+        List<MatchModel> matches = matchDaoCsv.convertFiles(offices);
 
         while (matches.size() != 0) {
             List<MatchModel> sameMatches = new ArrayList<>();
@@ -79,10 +79,10 @@ public class Service {
         return differentOfficesSameMatches;
     }
 
-    public boolean chechkIfProfitableMatchPair(MatchModel firstMatch, MatchModel secoundMatch){
-        boolean firstCase = (secoundMatch.getWinnerOdds() * firstMatch.getLoseOdds()) >= secoundMatch.getWinnerOdds() + firstMatch.getLoseOdds();
-        boolean secoundCase = (secoundMatch.getLoseOdds() * firstMatch.getWinnerOdds()) >= secoundMatch.getLoseOdds() + firstMatch.getWinnerOdds();
-        if( firstCase || secoundCase ){
+    public boolean checkIfProfitableMatchPair(MatchModel firstMatch, MatchModel secondMatch){
+        boolean firstCase = (secondMatch.getWinnerOdds() * firstMatch.getLoseOdds()) >= secondMatch.getWinnerOdds() + firstMatch.getLoseOdds();
+        boolean secondCase = (secondMatch.getLoseOdds() * firstMatch.getWinnerOdds()) >= secondMatch.getLoseOdds() + firstMatch.getWinnerOdds();
+        if( firstCase || secondCase ){
          return true;
         }
         else {
