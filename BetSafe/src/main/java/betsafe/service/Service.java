@@ -34,13 +34,12 @@ public class Service {
                         if(profitability){
                             profitableMatchPair.add(firstMatch);
                             profitableMatchPair.add(match);
+                            profitableMatchPairs.add(profitableMatchPair);
+
                         }
                     }
                 }
                 listOfSameMatches.remove(firstMatch);
-                if(profitableMatchPair.size() != 0){
-                    profitableMatchPairs.add(profitableMatchPair);
-                }
             }
             differentOfficesSameMatches.remove(listOfSameMatches);
         }
