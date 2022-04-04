@@ -32,4 +32,14 @@ class ServiceTest {
     void getSameMatches() {
 
     }
+
+
+    @Test
+    void checkIfProfitableMatchPair() {
+        MatchModel matchModelOne = new MatchModel("match date", "players", "1.6", "5.5", "test office");
+        MatchModel matchModelTwo = new MatchModel("match date", "players", "1.8", "5.1", "test office");
+
+        Boolean profitability = service.checkIfProfitableMatchPair(matchModelOne, matchModelTwo);
+        assertEquals(true, profitability);
+    }
 }
