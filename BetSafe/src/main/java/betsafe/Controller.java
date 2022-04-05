@@ -2,7 +2,7 @@ package betsafe;
 
 import betsafe.model.BettingOfficeModel;
 import betsafe.model.MatchModel;
-import betsafe.service.Service;
+import betsafe.service.BetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +16,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/")
 public class Controller {
-    private final Service officeFactory;
+    private final BetService officeFactory;
 
     @Autowired
-    public Controller(Service officeFactory) {
+    public Controller(BetService officeFactory) {
         this.officeFactory = officeFactory;
     }
 
