@@ -1,10 +1,16 @@
 import Header from './components/Header';
 import Body from './components/Body'
 import Navbar from './components/Navbar'
+
+
 import './App.css';
+import {dataHandler} from "./data/DataHandler";
 
 function App() {
-
+    dataHandler.getProfitableMatchPairs().then(r => {
+        console.log("LOOOOOOOOOOOOL")
+        console.log(r)
+    })
     const title = "Header lol"
 
   return (
