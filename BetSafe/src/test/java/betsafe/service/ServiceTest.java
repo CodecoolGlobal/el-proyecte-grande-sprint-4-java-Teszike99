@@ -2,7 +2,7 @@ package betsafe.service;
 
 import betsafe.model.BettingOfficeModel;
 import betsafe.model.MatchModel;
-import org.junit.jupiter.api.BeforeAll;
+import betsafe.model.ProfitableMatchesModel;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ServiceTest {
 
-    Service service = new Service();
+    BetService service = new BetService();
 
     @Test
     void getBettingOffice() throws IOException {
@@ -36,10 +36,12 @@ class ServiceTest {
 
     @Test
     void checkIfProfitableMatchPair() {
+        ProfitableMatchesModel profitCheck = new ProfitableMatchesModel();
+
         MatchModel matchModelOne = new MatchModel("match date", "players", "1.6", "5.5", "test office");
         MatchModel matchModelTwo = new MatchModel("match date", "players", "1.8", "5.1", "test office");
 
-        Boolean profitability = service.checkIfProfitableMatchPair(matchModelOne, matchModelTwo);
+        Boolean profitability = profitCheck.checkIfProfitableMatchPair(matchModelOne, matchModelTwo);
         assertEquals(true, profitability);
     }
 }
