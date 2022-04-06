@@ -1,7 +1,13 @@
+import SportCategory from "./SportCategory";
+import BodyContent from "./BodyContent";
+
+
 const Body = (props) => {
     return (
-        <div>
-            <h1>Body lol</h1>
+        <div className="main-body">
+            <SportCategory></SportCategory>
+            <BodyContent></BodyContent>
+
         </div>
     )
 }
