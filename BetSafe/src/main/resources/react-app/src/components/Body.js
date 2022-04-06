@@ -1,9 +1,13 @@
+import ProfitMatchpairsDiv from "./ProfitMatchpairsDiv";
+
 const Body = (props) => {
+
     return (
         <div>
-            <h1>Body lol</h1>
+            <ProfitMatchpairsDiv/>
         </div>
     )
 }
+
 
 export default Body;

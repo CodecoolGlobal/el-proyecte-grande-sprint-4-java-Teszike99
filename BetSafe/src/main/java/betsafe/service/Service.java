@@ -43,6 +43,7 @@ public class Service {
             }
             differentOfficesSameMatches.remove(listOfSameMatches);
         }
+
         return profitableMatchPairs;
     }
 
