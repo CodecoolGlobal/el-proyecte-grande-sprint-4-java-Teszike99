@@ -5,12 +5,11 @@ import './App.css';
 
 function App() {
 
-    const title = "Header lol"
 
   return (
     <div className="App">
-      <Header title={title}/>
-      <Navbar />
+      <Header/>
+        <Navbar></Navbar>
       <Body />
     </div>
   );
