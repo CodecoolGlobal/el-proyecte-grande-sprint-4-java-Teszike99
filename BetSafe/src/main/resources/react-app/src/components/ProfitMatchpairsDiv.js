@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {matches} from "@testing-library/jest-dom/dist/utils";
+import MatchPairDiv from "./MatchPairDiv";
 
 const helperObject = {
     name: null,
@@ -25,7 +25,7 @@ const ProfitMatchpairsDiv = (props) => {
     return (
         <div>
             <ul>
-                {matches}
+                <MatchPairDiv matches={matches}/>
             </ul>
         </div>
     )
