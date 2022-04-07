@@ -31,10 +31,6 @@
 .register-button:hover {
   background-color:#5cbf2a;
 }
-.register-button:active {
-  position:relative;
-  top:1px;
-}
 
 .login-button {
   background-color:#d11e1e;
@@ -54,10 +50,6 @@
 }
 .login-button:hover {
   background-color:#ff0000;
-}
-.login-button:active {
-  position:relative;
-  top:1px;
 }
 
 .topnav {
