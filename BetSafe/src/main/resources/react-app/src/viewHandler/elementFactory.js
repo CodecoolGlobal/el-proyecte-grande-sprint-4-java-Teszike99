@@ -3,10 +3,10 @@ import image from "../images/bet.png";
 
 export let elementFactory = {
     matchPairFactory: function (props){
-        let pairlyFirstMatch = 0;
+        let evenFirstMatch = 0;
         return props.matches.map(matchPair =>
             <div className="matchPair row">
-                <h5>{matchPair[pairlyFirstMatch].matchDate} {matchPair[pairlyFirstMatch].players}</h5>
+                <h5>{matchPair[evenFirstMatch].matchDate} {matchPair[evenFirstMatch].players}</h5>
                 {(<MatchDiv className="match column" datas={matchPair.map(match =>
                     <div className="matchTitle">
                         <div className="matchOdds">
