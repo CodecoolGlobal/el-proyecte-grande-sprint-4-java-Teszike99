@@ -2,7 +2,6 @@ package betsafe.service;
 
 import betsafe.model.BettingOfficeModel;
 import betsafe.model.MatchModel;
-import betsafe.model.ProfitableMatchesModel;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -24,24 +23,9 @@ class ServiceTest {
 
     @Test
     void getProfitableMatchPairs() throws IOException {
-        List<List<MatchModel>> profitable = service.getProfitableMatchPairs(new ArrayList<>(List.of("BetterBet.csv", "MegaGame.csv")));
-        assertEquals("Abraham ,Mateus", profitable.get(0).get(0).getPlayers());
+        List<List<MatchModel>> profitable = service.getBestOddsPairs(new ArrayList<>(List.of("BetterBet.csv", "Esport.csv", "MegaGame.csv", "UniBet.csv")));
+        assertEquals(3.4, profitable.contains().get(0).getHomeOdds());
+        assertEquals(2.45, profitable.get(0).get(1).getGuestOdds());
     }
 
-    @Test
-    void getSameMatches() {
-
-    }
-
-
-    @Test
-    void checkIfProfitableMatchPair() {
-        ProfitableMatchesModel profitCheck = new ProfitableMatchesModel();
-
-        MatchModel matchModelOne = new MatchModel("match date", "players", "1.6", "5.5", "test office");
-        MatchModel matchModelTwo = new MatchModel("match date", "players", "1.8", "5.1", "test office");
-
-        Boolean profitability = profitCheck.checkIfProfitableMatchPair(matchModelOne, matchModelTwo);
-        assertEquals(true, profitability);
-    }
 }
