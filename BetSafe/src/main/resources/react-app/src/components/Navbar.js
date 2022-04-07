@@ -1,7 +1,7 @@
 const Navbar = (props) => {
     return (
         <div className="topnav">
-            <a className="active" href="#">Home</a>
+            <a href="#">Home</a>
             <a href="#">Sports</a>
             <a href="#">Offices</a>
             <div className="topnav-right">

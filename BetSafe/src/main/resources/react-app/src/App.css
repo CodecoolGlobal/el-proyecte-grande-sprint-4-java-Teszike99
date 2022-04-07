@@ -3,6 +3,8 @@
   display: flex;
   justify-content: center;
   background-color: #333;
+
+
 }
 
 .header-text {
@@ -87,18 +89,13 @@
   float: right;
 }
 
-.main-body {
-  background-color: #1f1f1f;
-  display: flex;
-  color: white;
-}
 
 .left-nav {
-  overflow: hidden;
   position: absolute;
   left: auto;
   border: 10px solid #1f1f1f;
   background-color: #333;
+  height: 100%;
 }
 
 .left-nav a {
@@ -120,4 +117,30 @@
 .left-nav a.active {
   background-color: #44c767;
   color: white;
+}
+
+.main-container {
+  padding-left: 200px;
+  background-color: #1f1f1f;
+  color: white;
+  border: 10px solid #1f1f1f;
+
+}
+
+.image-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+b {
+  font-size: 24px;
+  text-align: justify;
+
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
 }
