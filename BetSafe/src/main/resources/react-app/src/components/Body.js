@@ -2,14 +2,14 @@ import SportCategory from "./SportCategory";
 import BodyContent from "./BodyContent";
 
 
-import ProfitMatchpairsDiv from "./ProfitMatchpairsDiv";
+import Matches from "./Matches";
+import HomePage from "./HomePage";
 
 const Body = (props) => {
     return (
         <div>
             <SportCategory/>
-            <BodyContent/>
-            <ProfitMatchpairsDiv/>
+            <BodyContent component={props.component}/>
         </div>
     )
 }
