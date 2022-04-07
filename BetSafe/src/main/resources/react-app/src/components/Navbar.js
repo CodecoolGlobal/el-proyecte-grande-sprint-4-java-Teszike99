@@ -1,8 +1,3 @@
-import Matches from "./Matches";
-import bodyContent from "./BodyContent";
-import HomePage from "./HomePage";
-import BodyContent from "./BodyContent";
-
 const Navbar = (props) => {
     return (
         <div className="topnav">

@@ -1,4 +1,3 @@
-import MatchDiv from "./MatchDiv";
 import {elementFactory} from "../viewHandler/elementFactory";
 const MatchPairDiv = (props) => {
     return (
