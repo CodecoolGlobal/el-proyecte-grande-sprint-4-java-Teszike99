@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class Controller {
 
     @GetMapping(value = "/index/profit-matches")
     public List<List<MatchModel>> getProfitableMatchPairs() throws IOException {
-        return officeFactory.getProfitableMatchPairs(new ArrayList<>(List.of("BetterBet", "Esport", "MegaGame", "UniBet")));
+        return officeFactory.getSameMatches(new ArrayList<>(List.of("BetterBet.csv", "MegaGame.csv")) {
+        });
     }
 }
