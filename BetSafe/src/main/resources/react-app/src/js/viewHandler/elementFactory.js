@@ -1,5 +1,5 @@
 import MatchDiv from "../components/MatchDiv";
-import image from "../images/bet.png";
+import image from "../../images/bet.png";
 
 export let elementFactory = {
     matchPairFactory: function (props){

@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import Body from './components/Body'
 import Navbar from './components/Navbar'
-import './App.css';
+import '../style/App.css';
 import HomePage from "./components/HomePage";
 import Matches from "./components/Matches";
 import {useState} from "react";
