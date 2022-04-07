@@ -1,4 +1,4 @@
-package betsafe.dao;
+package betsafe.repository;
 
 import betsafe.model.BettingOfficeEnum;
 
