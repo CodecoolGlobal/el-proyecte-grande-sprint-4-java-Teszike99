@@ -3,8 +3,8 @@ package betsafe.model;
 import java.util.List;
 
 public class BettingOfficeModel {
-    private String name;
-    private List<MatchModel> matches;
+    private final String name;
+    private final List<MatchModel> matches;
 
     public BettingOfficeModel(String name, List<MatchModel> matches){
         this.name = name;

@@ -24,8 +24,9 @@ class ServiceTest {
     @Test
     void getProfitableMatchPairs() throws IOException {
         List<List<MatchModel>> profitable = service.getBestOddsPairs(new ArrayList<>(List.of("BetterBet.csv", "Esport.csv", "MegaGame.csv", "UniBet.csv")));
-        assertEquals(3.4, profitable.get(0).get(0).getHomeOdds());
-        assertEquals(2.45, profitable.get(0).get(1).getGuestOdds());
+        assertEquals(2.83, profitable.get(0).get(0).getHomeOdds());
+        assertEquals(1.73, profitable.get(0).get(1).getGuestOdds());
     }
+
 
 }

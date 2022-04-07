@@ -1,11 +1,11 @@
 package betsafe.model;
 
 public class MatchModel {
-    private String matchDate;
-    private String players;
-    private double homeOdds;
-    private double guestOdds;
-    private String bettingOffice;
+    private final String matchDate;
+    private final String players;
+    private final double homeOdds;
+    private final double guestOdds;
+    private final String bettingOffice;
 
     public MatchModel(String matchDate, String players, String homeOdds, String guestOdds, String bettingOffice) {
         this.matchDate = matchDate;
