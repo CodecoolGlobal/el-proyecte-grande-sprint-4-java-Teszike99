@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import MatchPairDiv from "./MatchPairDiv";
 import {default as apiGet} from "../data/dataHandler"
 
-const ProfitMatchpairsDiv = () => {
+const Matches = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -17,6 +17,6 @@ const ProfitMatchpairsDiv = () => {
     )
 }
 
-export default ProfitMatchpairsDiv;
+export default Matches;
 
 

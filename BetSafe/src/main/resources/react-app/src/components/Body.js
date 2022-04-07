@@ -2,14 +2,13 @@ import SportCategory from "./SportCategory";
 import BodyContent from "./BodyContent";
 
 
-import ProfitMatchpairsDiv from "./ProfitMatchpairsDiv";
+import Matches from "./Matches";
 
 const Body = (props) => {
     return (
         <div>
             <SportCategory/>
             <BodyContent/>
-            <ProfitMatchpairsDiv/>
         </div>
     )
 }
