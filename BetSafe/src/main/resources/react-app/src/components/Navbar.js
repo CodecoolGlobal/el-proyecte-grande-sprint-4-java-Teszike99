@@ -1,7 +1,17 @@
+import Matches from "./Matches";
+import bodyContent from "./BodyContent";
+import HomePage from "./HomePage";
+import BodyContent from "./BodyContent";
+
 const Navbar = (props) => {
     return (
-        <div>
-            <h1>Navbar lol</h1>
+        <div className="topnav">
+            <a href="#">Home</a>
+            <a href="#">Sports</a>
+            <a href="#">Offices</a>
+            <div className="topnav-right">
+                <a href="#">Search</a>
+            </div>
         </div>
     )
 }
