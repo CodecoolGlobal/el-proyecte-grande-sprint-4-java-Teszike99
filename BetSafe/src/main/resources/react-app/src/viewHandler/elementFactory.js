@@ -10,8 +10,8 @@ export let elementFactory = {
                 {(<MatchDiv className="match column" datas={matchPair.map(match =>
                     <div className="matchTitle">
                         <div className="matchOdds">
-                            <h4>Winner Odds: {match.winnerOdds}</h4>
-                            <h4>Lose odds: {match.loseOdds}</h4>
+                            <h4>Winner Odds: {match.homeOdds}</h4>
+                            <h4>Lose odds: {match.guestOdds}</h4>
                         </div>
                         <h5>{match.bettingOffice}</h5>
                     </div>)}/>)}
