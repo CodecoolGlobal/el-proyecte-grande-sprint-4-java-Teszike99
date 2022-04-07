@@ -3,15 +3,15 @@ package betsafe.model;
 public class MatchModel {
     private String matchDate;
     private String players;
-    private double winnerOdds;
-    private double loseOdds;
+    private double homeOdds;
+    private double guestOdds;
     private String bettingOffice;
 
-    public MatchModel(String matchDate, String players, String winnerOdds, String loseOdds, String bettingOffice) {
+    public MatchModel(String matchDate, String players, String homeOdds, String guestOdds, String bettingOffice) {
         this.matchDate = matchDate;
         this.players = players;
-        this.winnerOdds = Double.parseDouble(winnerOdds);
-        this.loseOdds = Double.parseDouble(loseOdds);
+        this.homeOdds = Double.parseDouble(homeOdds);
+        this.guestOdds = Double.parseDouble(guestOdds);
         this.bettingOffice = bettingOffice;
     }
 
@@ -23,15 +23,16 @@ public class MatchModel {
         return players;
     }
 
-    public double getWinnerOdds() {
-        return winnerOdds;
+    public double getHomeOdds() {
+        return homeOdds;
     }
 
-    public double getLoseOdds() {
-        return loseOdds;
+    public double getGuestOdds() {
+        return guestOdds;
     }
 
     public String getBettingOffice() {
         return bettingOffice;
     }
+
 }
