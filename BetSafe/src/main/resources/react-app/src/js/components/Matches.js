@@ -11,7 +11,7 @@ const Matches = () => {
     },[])
 
     return (
-        <div>
+        <div className="main-container">
             <MatchPairDiv matches={data}/>
         </div>
     )

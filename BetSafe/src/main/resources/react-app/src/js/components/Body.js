@@ -1,14 +1,11 @@
 import SportCategory from "./SportCategory";
 import BodyContent from "./BodyContent";
 
-
-import Matches from "./Matches";
-
 const Body = (props) => {
     return (
         <div>
             <SportCategory/>
-            <BodyContent/>
+            <BodyContent component={props.component}/>
         </div>
     )
 }
