@@ -30,7 +30,8 @@ public class Controller {
     }
 
     @GetMapping(value = "/index/profit-matches")
-    public BettingOfficeModel getProfitableMatchPairs() throws IOException {
-        return officeFactory.getBettingOffice("BetterBet.csv");
+    public List<List<MatchModel>> getProfitableMatchPairs() throws IOException {
+        return officeFactory.getSameMatches(new ArrayList<>(List.of("BetterBet.csv", "MegaGame.csv")) {
+        });
     }
 }

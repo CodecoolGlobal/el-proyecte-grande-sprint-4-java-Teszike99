@@ -1,13 +1,8 @@
 import {useEffect, useState} from "react";
 import MatchPairDiv from "./MatchPairDiv";
 
-const helperObject = {
-    name: null,
-    matches: []
-}
-
 const ProfitMatchpairsDiv = (props) => {
-    const [data, setData] = useState(helperObject)
+    const [data, setData] = useState([])
 
     useEffect(() => {
         const apiGet = () => {
@@ -20,13 +15,9 @@ const ProfitMatchpairsDiv = (props) => {
         apiGet();
     },[])
 
-    const matches = data.matches.map(match => <li>{match.players} <b>Date: {match.matchDate}</b></li>)
-
     return (
         <div>
-            <ul>
-                <MatchPairDiv matches={matches}/>
-            </ul>
+            <MatchPairDiv matches={data}/>
         </div>
     )
 }
