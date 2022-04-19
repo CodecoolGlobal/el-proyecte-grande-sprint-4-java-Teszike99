@@ -7,13 +7,13 @@ export let elementFactory = {
         return props.matches.map(matchPair =>
             <div className="matchPair row">
                 <h5>{matchPair[evenFirstMatch].matchDate} {matchPair[evenFirstMatch].players}</h5>
-                {(<MatchDiv className="match column" datas={matchPair.map(match =>
-                    <div className="matchTitle">
-                        <div className="matchOdds">
-                            <h4>Home Odds: {match.homeOdds}</h4>
-                            <h4>Guest odds: {match.guestOdds}</h4>
-                        </div>
-                        <h5>{match.bettingOffice}</h5>
+                {(<MatchDiv className="match" datas={matchPair.map(match =>
+                        <div class="col-sm-6">
+                            <div className="matchOdds">
+                                <h4>Home Odds: {match.homeOdds}</h4>
+                                <h4>Guest odds: {match.guestOdds}</h4>
+                            </div>
+                            <h5>{match.bettingOffice}</h5>
                     </div>)}/>)}
             </div>);
     },
