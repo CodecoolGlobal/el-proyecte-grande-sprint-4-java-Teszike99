@@ -14,14 +14,24 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Entity
 public class Match {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String bettingOffice;
     private String matchDate;
-    private String homePlayer;
-    private String guestPlayer;
+    private String players;
     private double homeOdds;
     private double guestOdds;
-    private String sportCategory;
+    private String sportType;
+    private String bettingOffice;
+
+    public Match(String matchDate, String players, String homeOdds, String guestOdds, String bettingOffice, String sportType) {
+        this.matchDate = matchDate;
+        this.players = players;
+        this.homeOdds = Double.parseDouble(homeOdds);
+        this.guestOdds = Double.parseDouble(guestOdds);
+        this.bettingOffice = bettingOffice;
+        this.sportType = sportType;
+    }
+
 }
