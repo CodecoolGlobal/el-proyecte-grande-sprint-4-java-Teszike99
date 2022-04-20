@@ -2,7 +2,6 @@ package betsafe.service;
 
 import betsafe.model.MatchModelMapping;
 import betsafe.repository.MatchDaoCsv;
-import betsafe.model.BettingOfficeModel;
 import betsafe.model.Match;
 import betsafe.repository.MatchRepository;
 import org.springframework.stereotype.Service;
