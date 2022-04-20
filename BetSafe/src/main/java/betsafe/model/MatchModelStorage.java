@@ -1,17 +1,16 @@
 package betsafe.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MatchModelStorage {
 
-    private final List<MatchModel> storage;
+    private final List<Match> storage;
 
-    public MatchModelStorage(List<MatchModel> matches) {
+    public MatchModelStorage(List<Match> matches) {
         this.storage = matches;
     }
 
-    public List<MatchModel> getStorage() {
+    public List<Match> getStorage() {
         return storage;
     }
 

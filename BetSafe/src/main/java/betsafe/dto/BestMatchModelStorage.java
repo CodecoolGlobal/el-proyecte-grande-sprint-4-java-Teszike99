@@ -1,18 +1,18 @@
 package betsafe.dto;
 
-import betsafe.model.MatchModel;
+import betsafe.model.Match;
 
 import java.util.List;
 
 public class BestMatchModelStorage {
 
-    private final List<List<MatchModel>> bestOddsPairs;
+    private final List<List<Match>> bestOddsPairs;
 
-    public BestMatchModelStorage(List<List<MatchModel>> bestOddsPairs) {
+    public BestMatchModelStorage(List<List<Match>> bestOddsPairs) {
         this.bestOddsPairs = bestOddsPairs;
     }
 
-    public List<List<MatchModel>> getBestOddsPairs() {
+    public List<List<Match>> getBestOddsPairs() {
         return bestOddsPairs;
     }
 }

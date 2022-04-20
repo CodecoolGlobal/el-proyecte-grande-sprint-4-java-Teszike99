@@ -4,9 +4,9 @@ import java.util.List;
 
 public class BettingOfficeModel {
     private final String name;
-    private final List<MatchModel> matches;
+    private final List<Match> matches;
 
-    public BettingOfficeModel(String name, List<MatchModel> matches){
+    public BettingOfficeModel(String name, List<Match> matches){
         this.name = name;
         this.matches = matches;
     }
@@ -15,7 +15,7 @@ public class BettingOfficeModel {
         return name;
     }
 
-    public List<MatchModel> getMatches() {
+    public List<Match> getMatches() {
         return matches;
     }
 }
