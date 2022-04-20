@@ -19,6 +19,7 @@ public class MatchDaoCsv {
                 String[] values = line.split(",");
                 MatchModel matchModel = new MatchModel(values[1], values[2] + " ," + values[3], values[4], values[5], values[0]);
                 matches.add(matchModel);
+
             }
         }
         return matches;
