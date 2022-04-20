@@ -6,7 +6,7 @@ const Matches = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        apiGet("/index/profit-matches")
+        apiGet("/match_pairs")
             .then(response => {setData(response)});
     },[])
 
