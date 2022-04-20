@@ -17,7 +17,7 @@ public class Match {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long matchId;
     private String matchDate;
     private String players;
     private double homeOdds;
