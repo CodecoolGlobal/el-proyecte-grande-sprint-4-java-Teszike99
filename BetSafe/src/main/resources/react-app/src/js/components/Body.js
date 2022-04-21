@@ -3,7 +3,7 @@ import BodyContent from "./BodyContent";
 
 const Body = (props) => {
     return (
-        <div>
+        <div className="body row">
             <SportCategory/>
             <BodyContent component={props.component}/>
         </div>
