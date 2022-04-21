@@ -15,9 +15,8 @@ import java.util.Map;
 
 @Service
 public class BetService {
-
     private final MatchDaoCsv matchDaoCsv;
-    private MatchRepository matchRepository;
+    private final MatchRepository matchRepository;
 
     public BetService(MatchDaoCsv matchDaoCsv, MatchRepository matchRepository) {
         this.matchDaoCsv = matchDaoCsv;
