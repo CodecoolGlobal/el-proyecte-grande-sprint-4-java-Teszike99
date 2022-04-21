@@ -27,7 +27,6 @@ public class Controller {
 
     @GetMapping("match-pairs")
     public List<List<Match>> getProfitableMatchPairs(){
-        System.out.println(betService.getBestOddsPairs());
         return betService.getBestOddsPairs();
     }
 
