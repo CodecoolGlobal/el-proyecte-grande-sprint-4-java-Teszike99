@@ -1,7 +1,7 @@
 const BodyContent = (props) => {
 
  return(
-    <div>{props.component}</div>
+    <div className="content-container col-md" >{props.component}</div>
  )
 }
 

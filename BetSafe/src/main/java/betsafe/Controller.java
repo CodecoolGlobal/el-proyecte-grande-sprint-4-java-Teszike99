@@ -20,22 +20,21 @@ public class Controller {
         this.betService = betService;
     }
 
-    @GetMapping("/search_office/{office}")
+    @GetMapping("/search-office/{office}")
     public List<Match> getOfficeStorage(@PathVariable("office") String searchedOffice){
         return betService.getByBettingOffice(searchedOffice);
     }
 
-    @GetMapping("match_pairs")
+    @GetMapping("match-pairs")
     public List<List<Match>> getProfitableMatchPairs(){
+        System.out.println(betService.getBestOddsPairs());
         return betService.getBestOddsPairs();
     }
 
-    @GetMapping("search_sport/{sport}")
+    @GetMapping("search-sport/{sport}")
     public List<Match> getMatchesBySport(@PathVariable("sport") String searchedSport){
         return betService.getBySport(searchedSport);
     }
-
-
 
     //for reading the CSV
     @PostMapping(value = "/in")
