@@ -5,9 +5,10 @@ import '../style/App.css';
 import HomePage from "./components/HomePage";
 import {useState} from "react";
 import InvestPage from "./components/InvestPage";
+import Office from "./components/Office";
 
 function App() {
-    const components = [<HomePage/>, <InvestPage/>] // Need this to change body contex
+    const components = [<HomePage/>, <InvestPage/>, <Office/>] // Need this to change body contex
     const [componentIndex, setIndex] = useState(0); //use state hook
     function handleClick(page){
         if(page === "matches"){
@@ -15,6 +16,9 @@ function App() {
         }
         else if(page === "home"){
             setIndex(0)
+        }
+        else if (page === "office") {
+            setIndex(2)
         }
     }
   return (
