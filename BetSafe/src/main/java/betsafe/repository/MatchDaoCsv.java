@@ -1,14 +1,16 @@
 package betsafe.repository;
 
 import betsafe.model.MatchModel;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class MatchDaoCsv {
-    // Convert files into MatchModels array
     public List<MatchModel> convertFiles(List<String> files) throws IOException {
         List<MatchModel> matches = new ArrayList<>();
         String line = "";

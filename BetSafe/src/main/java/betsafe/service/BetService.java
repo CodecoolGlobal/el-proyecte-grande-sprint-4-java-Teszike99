@@ -7,6 +7,7 @@ import betsafe.model.MatchModelStorage;
 import betsafe.repository.MatchDaoCsv;
 import betsafe.model.BettingOfficeModel;
 import betsafe.model.MatchModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -16,7 +17,11 @@ import java.util.Map;
 
 @Service
 public class BetService {
-    private final MatchDaoCsv matchDaoCsv = new MatchDaoCsv();
+
+    private final MatchDaoCsv matchDaoCsv;
+    BetService(MatchDaoCsv matchDaoCsv){
+        this.matchDaoCsv = matchDaoCsv;
+    }
 
     public List<MatchModel> getMatches(List<String> offices) throws IOException {
         return matchDaoCsv.convertFiles(offices);
