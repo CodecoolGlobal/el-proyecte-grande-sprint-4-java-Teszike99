@@ -5,16 +5,20 @@ import '../style/App.css';
 import HomePage from "./components/HomePage";
 import {useState} from "react";
 import InvestPage from "./components/InvestPage";
+import FixMatchPage from "./components/FixMatchPage";
 
 function App() {
-    const components = [<HomePage/>, <InvestPage/>] // Need this to change body contex
+    const components = [<HomePage/>, <InvestPage/>, <FixMatchPage/> ] // Need this to change body contex
     const [componentIndex, setIndex] = useState(0); //use state hook
     function handleClick(page){
         if(page === "matches"){
-            setIndex(1)
+            setIndex(1);
+        }
+        if(page === "fix matches"){
+            setIndex(2);
         }
         else if(page === "home"){
-            setIndex(0)
+            setIndex(0);
         }
     }
   return (
