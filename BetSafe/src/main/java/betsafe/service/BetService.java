@@ -1,7 +1,5 @@
 package betsafe.service;
 
-import betsafe.dto.BestMatchModelStorage;
-import betsafe.dto.SameMatchesModelStorage;
 import betsafe.model.Match;
 import betsafe.model.MatchModelMapping;
 import betsafe.repository.MatchDaoCsv;
@@ -9,15 +7,13 @@ import betsafe.repository.MatchRepository;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class BetService {
-
     private final MatchDaoCsv matchDaoCsv;
-    private MatchRepository matchRepository;
+    private final MatchRepository matchRepository;
 
     public BetService(MatchDaoCsv matchDaoCsv, MatchRepository matchRepository) {
         this.matchDaoCsv = matchDaoCsv;
