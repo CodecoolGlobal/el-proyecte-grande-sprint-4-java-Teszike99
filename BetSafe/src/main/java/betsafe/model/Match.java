@@ -25,7 +25,9 @@ public class Match {
     private String sportType;
     private String bettingOffice;
 
-    public Match(String matchDate, String players, String homeOdds, String guestOdds, String bettingOffice, String sportType) {
+    public Match(String matchDate, String players,
+                 String homeOdds, String guestOdds,
+                 String bettingOffice, String sportType) {
         this.matchDate = matchDate;
         this.players = players;
         this.homeOdds = Double.parseDouble(homeOdds);
