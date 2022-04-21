@@ -13,7 +13,7 @@ import java.util.List;
 
 class MatchModelMappingTest {
 
-    static final BetService service = new BetService();
+    static BetService service;
     static SameMatchesModelStorage sameMatches;
     static BestMatchModelStorage bestMatchOddsPairsStorage;
 
