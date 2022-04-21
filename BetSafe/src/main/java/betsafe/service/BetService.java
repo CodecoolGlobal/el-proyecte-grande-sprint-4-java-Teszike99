@@ -2,8 +2,10 @@ package betsafe.service;
 
 import betsafe.dto.BestMatchModelStorage;
 import betsafe.dto.SameMatchesModelStorage;
+import betsafe.model.BettingOffice;
 import betsafe.model.Match;
 import betsafe.model.MatchModelMapping;
+import betsafe.repository.BettingOfficeRepository;
 import betsafe.repository.MatchDaoCsv;
 import betsafe.repository.MatchRepository;
 import org.springframework.stereotype.Service;
@@ -18,10 +20,14 @@ public class BetService {
 
     private final MatchDaoCsv matchDaoCsv;
     private MatchRepository matchRepository;
+    private BettingOfficeRepository bettingOfficeRepository;
 
-    public BetService(MatchDaoCsv matchDaoCsv, MatchRepository matchRepository) {
+    public BetService(MatchDaoCsv matchDaoCsv,
+                      MatchRepository matchRepository,
+                      BettingOfficeRepository bettingOfficeRepository) {
         this.matchDaoCsv = matchDaoCsv;
         this.matchRepository = matchRepository;
+        this.bettingOfficeRepository = bettingOfficeRepository;
     }
 
     public void createDbFromCSV(List<String> offices) throws IOException  {
@@ -40,6 +46,10 @@ public class BetService {
         List<Match> allMatches = matchRepository.findAll();
         Map<String, List<Match>> sameMatches = MatchModelMapping.getSameMatches(allMatches);
         return MatchModelMapping.getBestPairs(sameMatches);
+    }
+
+    public List<BettingOffice> getAllOffice() {
+        return bettingOfficeRepository.findAll();
     }
 }
 

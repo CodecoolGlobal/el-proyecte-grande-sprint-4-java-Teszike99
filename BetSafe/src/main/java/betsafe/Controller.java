@@ -1,5 +1,6 @@
 package betsafe;
 
+import betsafe.model.BettingOffice;
 import betsafe.model.Match;
 import betsafe.service.BetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class Controller {
     }
 
     @GetMapping("/search-office/{office}")
-    public List<Match> getOfficeStorage(@PathVariable("office") String searchedOffice){
+    public List<Match> getMatchesByOffice(@PathVariable("office") String searchedOffice){
         return betService.getByBettingOffice(searchedOffice);
     }
 
@@ -29,6 +30,11 @@ public class Controller {
     public List<List<Match>> getProfitableMatchPairs(){
         System.out.println(betService.getBestOddsPairs());
         return betService.getBestOddsPairs();
+    }
+
+    @GetMapping("offices")
+    public List<BettingOffice> getAllOffices(){
+        return betService.getAllOffice();
     }
 
     @GetMapping("search-sport/{sport}")
