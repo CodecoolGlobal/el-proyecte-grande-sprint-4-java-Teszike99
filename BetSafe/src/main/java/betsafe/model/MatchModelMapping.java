@@ -6,21 +6,21 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class MatchModelMapping {
 
-    public static Map<String, List<MatchModel>> getSameMatches(List<MatchModel> matches){
+    public static Map<String, List<Match>> getSameMatches(List<Match> matches){
         return matches.stream()
                 .collect(groupingBy(match -> match.getMatchDate() + match.getPlayers()));
     }
 
-    public static List<List<MatchModel>> getBestPairs(Map<String, List<MatchModel>> sameMatches){
-        List<List<MatchModel>> bestOddsPairs = new ArrayList<>();
-        for (List<MatchModel> oneGroup : sameMatches.values()){
-            List<MatchModel> matchPairs = new ArrayList<>();
-             MatchModel bestHomeOdds = oneGroup.stream()
-                     .max(Comparator.comparing(MatchModel::getHomeOdds))
+    public static List<List<Match>> getBestPairs(Map<String, List<Match>> sameMatches){
+        List<List<Match>> bestOddsPairs = new ArrayList<>();
+        for (List<Match> oneGroup : sameMatches.values()){
+            List<Match> matchPairs = new ArrayList<>();
+             Match bestHomeOdds = oneGroup.stream()
+                     .max(Comparator.comparing(Match::getHomeOdds))
                      .orElseThrow(NoSuchElementException::new);
                     matchPairs.add(bestHomeOdds);
-             MatchModel bestGuestOdds = oneGroup.stream()
-                     .max(Comparator.comparing(MatchModel::getGuestOdds))
+             Match bestGuestOdds = oneGroup.stream()
+                     .max(Comparator.comparing(Match::getGuestOdds))
                      .orElseThrow(NoSuchElementException::new);
                     matchPairs.add(bestGuestOdds);
             bestOddsPairs.add(matchPairs);

@@ -1,36 +1,45 @@
 package betsafe;
 
-import betsafe.model.BettingOfficeModel;
-import betsafe.model.MatchModel;
+import betsafe.model.Match;
 import betsafe.service.BetService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/")
 public class Controller {
-    private final BetService officeFactory;
+
+    private final BetService betService;
 
     @Autowired
-    public Controller(BetService officeFactory) {
-        this.officeFactory = officeFactory;
+    public Controller(BetService betService) {
+        this.betService = betService;
     }
 
-    @GetMapping(value = "/index/search_office")
-    public BettingOfficeModel getOfficeStorage(@RequestParam String searchedOffice) throws IOException {
-        return officeFactory.getBettingOffice(searchedOffice);
+    @GetMapping("/search_office/{office}")
+    public List<Match> getOfficeStorage(@PathVariable("office") String searchedOffice){
+        return betService.getByBettingOffice(searchedOffice);
     }
 
-    @GetMapping(value = "/index/profit-matches")
-    public List<List<MatchModel>> getProfitableMatchPairs() throws IOException {
-        return officeFactory.getBestOddsPairs(new ArrayList<>(List.of("BetterBet.csv", "Esport.csv", "MegaGame.csv", "UniBet.csv")));
+    @GetMapping("match_pairs")
+    public List<List<Match>> getProfitableMatchPairs(){
+        return betService.getBestOddsPairs();
+    }
+
+    @GetMapping("search_sport/{sport}")
+    public List<Match> getMatchesBySport(@PathVariable("sport") String searchedSport){
+        return betService.getBySport(searchedSport);
+    }
+
+
+
+    //for reading the CSV
+    @PostMapping(value = "/in")
+    public void createDb()  throws IOException {
+        betService.createDbFromCSV(new ArrayList<>(List.of("BetterBet.csv", "Esport.csv", "MegaGame.csv", "UniBet.csv")));
     }
 }
