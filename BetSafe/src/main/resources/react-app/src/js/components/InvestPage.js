@@ -4,11 +4,10 @@ import MatchPair from "./MatchPair";
 const InvestPage = (props) => {
 
     const [data, setData] = useState([])
-    const [investHomeText, setInvestHomeText] = useState(null)
-    const [investGuestText, setInvestGuestText] = useState(null)
+    const [investHomeText, setInvestHomeText] = useState(null);
+    const [investGuestText, setInvestGuestText] = useState(null);
     const matchPairProfitList = [];
-    const matchPairList = data.map( matchPair => <MatchPair matchPairData={matchPair} investHome={investHomeText} investGuest={investGuestText}/> )
-
+    const matchPairList = data.map( matchPair => <MatchPair matchPairData={matchPair} investHome={investHomeText} investGuest={investGuestText} profit={true}/> );
     // get the data from db
     useEffect(() => {
         apiGet("/match-pairs")
