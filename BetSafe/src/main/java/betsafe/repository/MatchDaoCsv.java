@@ -12,7 +12,6 @@ import java.util.List;
 
 @Repository
 public class MatchDaoCsv {
-    // Convert files into MatchModels array
     private MatchRepository matchRepository;
     private BettingOfficeRepository bettingOfficeRepository;
     @Autowired
