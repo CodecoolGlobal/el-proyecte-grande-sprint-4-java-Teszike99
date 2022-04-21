@@ -13,17 +13,16 @@ import java.util.List;
 
 class MatchModelMappingTest {
 
-    static final BetService service = new BetService();
     static SameMatchesModelStorage sameMatches;
     static BestMatchModelStorage bestMatchOddsPairsStorage;
-
-    @BeforeAll
-    static void createSameMatchStorage() throws IOException {
-        MatchModelStorage storage = new MatchModelStorage(service.getMatches
-                (new ArrayList<>(List.of("BetterBet.csv", "Esport.csv", "MegaGame.csv", "UniBet.csv"))));
-        sameMatches = new SameMatchesModelStorage
-                (MatchModelMapping.getSameMatches(storage.getStorage()));
-    }
+//
+//    @BeforeAll
+//    static void createSameMatchStorage() throws IOException {
+//        MatchModelStorage storage = new MatchModelStorage(service.getMatches
+//                (new ArrayList<>(List.of("BetterBet.csv", "Esport.csv", "MegaGame.csv", "UniBet.csv"))));
+//        sameMatches = new SameMatchesModelStorage
+//                (MatchModelMapping.getSameMatches(storage.getStorage()));
+//    }
 
     @BeforeAll
     static void getBestOddsPairs(){
