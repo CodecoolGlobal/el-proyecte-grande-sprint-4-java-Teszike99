@@ -12,7 +12,6 @@ import java.util.List;
 
 @Repository
 public class MatchDaoCsv {
-    // Convert files into MatchModels array
     private MatchRepository matchRepository;
     private BettingOfficeRepository bettingOfficeRepository;
     @Autowired
@@ -24,7 +23,7 @@ public class MatchDaoCsv {
     public List<Match> convertFiles(List<String> files) throws IOException {
         List<Match> matches = new ArrayList<>();
         String line = "";
-        String mapping = "src/main/resources/csvData/";
+        String mapping = "BetSafe/src/main/resources/csvData/";
         for (String path : files) {
             String bettingOfficeName = null;
             BufferedReader br = new BufferedReader(new java.io.FileReader(mapping + path));
