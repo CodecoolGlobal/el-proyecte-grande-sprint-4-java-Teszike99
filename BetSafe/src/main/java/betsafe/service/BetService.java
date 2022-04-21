@@ -1,12 +1,15 @@
 package betsafe.service;
 
+import betsafe.dto.BestMatchModelStorage;
+import betsafe.dto.SameMatchesModelStorage;
+import betsafe.model.Match;
 import betsafe.model.MatchModelMapping;
 import betsafe.repository.MatchDaoCsv;
-import betsafe.model.Match;
 import betsafe.repository.MatchRepository;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +41,5 @@ public class BetService {
         Map<String, List<Match>> sameMatches = MatchModelMapping.getSameMatches(allMatches);
         return MatchModelMapping.getBestPairs(sameMatches);
     }
-
 }
 

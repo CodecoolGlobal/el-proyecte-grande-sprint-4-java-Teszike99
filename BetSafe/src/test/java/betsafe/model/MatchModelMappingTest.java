@@ -10,19 +10,20 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 class MatchModelMappingTest {
 
+    static BetService service;
     static SameMatchesModelStorage sameMatches;
     static BestMatchModelStorage bestMatchOddsPairsStorage;
-//
-//    @BeforeAll
-//    static void createSameMatchStorage() throws IOException {
-//        MatchModelStorage storage = new MatchModelStorage(service.getMatches
-//                (new ArrayList<>(List.of("BetterBet.csv", "Esport.csv", "MegaGame.csv", "UniBet.csv"))));
-//        sameMatches = new SameMatchesModelStorage
-//                (MatchModelMapping.getSameMatches(storage.getStorage()));
-//    }
+
+    @BeforeAll
+    static void createSameMatchStorage() throws IOException {
+        MatchModelStorage storage = new MatchModelStorage(service.getMatches
+                (new ArrayList<>(List.of("BetterBet.csv", "Esport.csv", "MegaGame.csv", "UniBet.csv"))));
+        sameMatches = new SameMatchesModelStorage
+                (MatchModelMapping.getSameMatches(storage.getStorage()));
+    }
 
     @BeforeAll
     static void getBestOddsPairs(){
@@ -63,3 +64,5 @@ class MatchModelMappingTest {
     }
 
 }
+
+ */

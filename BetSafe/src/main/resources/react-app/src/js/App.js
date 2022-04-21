@@ -3,11 +3,11 @@ import Body from './components/Body'
 import Navbar from './components/Navbar'
 import '../style/App.css';
 import HomePage from "./components/HomePage";
-import Matches from "./components/Matches";
 import {useState} from "react";
+import InvestPage from "./components/InvestPage";
 
 function App() {
-    const components = [<HomePage/>, <Matches/>] // Need this to change body contex
+    const components = [<HomePage/>, <InvestPage/>] // Need this to change body contex
     const [componentIndex, setIndex] = useState(0); //use state hook
     function handleClick(page){
         if(page === "matches"){
