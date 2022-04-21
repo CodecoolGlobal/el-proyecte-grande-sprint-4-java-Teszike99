@@ -11,7 +11,7 @@ const InvestPage = (props) => {
 
     // get the data from db
     useEffect(() => {
-        apiGet("/index/profit-matches")
+        apiGet("/match-pairs")
             .then(response => {setData(response)});
     },[])
 

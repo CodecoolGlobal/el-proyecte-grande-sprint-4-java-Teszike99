@@ -2,11 +2,10 @@ package betsafe.service;
 
 import betsafe.dto.BestMatchModelStorage;
 import betsafe.dto.SameMatchesModelStorage;
+import betsafe.model.Match;
 import betsafe.model.MatchModelMapping;
-import betsafe.model.MatchModelStorage;
 import betsafe.repository.MatchDaoCsv;
-import betsafe.model.BettingOfficeModel;
-import betsafe.model.MatchModel;
+import betsafe.repository.MatchRepository;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
