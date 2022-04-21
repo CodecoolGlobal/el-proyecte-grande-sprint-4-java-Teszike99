@@ -1,25 +1,27 @@
-import MatchDiv from "../components/MatchDiv";
+import MatchPair from "../components/MatchPair";
 import image from "../../images/bet.png";
 
 export let elementFactory = {
-    matchPairFactory: function (props){
+    /*matchPairFactory: function (props){
         let evenFirstMatch = 0;
         return props.matches.map(matchPair =>
-            <div className="matchPair row">
-                <h5>{matchPair[evenFirstMatch].matchDate} {matchPair[evenFirstMatch].players}</h5>
-                {(<MatchDiv className="match" datas={matchPair.map(match =>
-                        <div class="col-sm-6">
+            <div className="match-pair-container">
+                <div className="match-title">{matchPair[evenFirstMatch].matchDate} {matchPair[evenFirstMatch].players}</div>
+                <div className="match-pair row">
+                    {(<MatchPair className="match" datas={matchPair.map(match =>
+                        <div class="col-sm-5">
+                            <h5>{match.bettingOffice}</h5>
                             <div className="matchOdds">
                                 <h4>Home Odds: {match.homeOdds}</h4>
                                 <h4>Guest odds: {match.guestOdds}</h4>
                             </div>
-                            <h5>{match.bettingOffice}</h5>
-                    </div>)}/>)}
+                        </div>)}/>)}
+                </div>
             </div>);
-    },
+    },*/
 
     homePageFactory: function (){
-        return <div className="main-container">
+        return <div className="home-container">
             <h1>Live your life, free from risk</h1><br></br>
             <img className="image-container" src={image} alt=''/>
             <br/><br/><br/>
