@@ -32,7 +32,7 @@ public class Controller {
     }
 
     @GetMapping("search-sport/{sport}")
-    public List<Match> getMatchesBySport(@PathVariable("sport") String searchedSport){
+    public List<List<Match>> getMatchesBySport(@PathVariable("sport") String searchedSport){
         return betService.getBySport(searchedSport);
     }
 

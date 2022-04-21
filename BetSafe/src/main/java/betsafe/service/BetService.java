@@ -28,8 +28,10 @@ public class BetService {
         return matchRepository.findMatchesByBettingOffice(office);
     }
 
-    public List<Match> getBySport(String searchedSport) {
-        return matchRepository.findMatchesBySportType(searchedSport);
+    public List<List<Match>> getBySport(String searchedSport) {
+        List<Match> allMatches = matchRepository.findMatchesBySportType(searchedSport);
+        Map<String, List<Match>> sameMatches = MatchModelMapping.getSameMatches(allMatches);
+        return MatchModelMapping.getBestPairs(sameMatches);
     }
 
     public List<List<Match>> getBestOddsPairs() {
