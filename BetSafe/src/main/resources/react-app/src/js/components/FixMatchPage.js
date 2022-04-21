@@ -1,22 +1,18 @@
 import {useEffect, useState} from "react";
-import MatchPairDiv from "./MatchPairDiv";
-import {default as apiGet} from "../data/dataHandler"
+import {apiGet} from "../data/dataHandler";
 
-const Matches = () => {
+const FixMatchPage = () => {
     const [data, setData] = useState([])
-
     useEffect(() => {
         apiGet("/match-pairs")
             .then(response => {setData(response)});
     },[])
-
+    console.log(data)
     return (
-        <div className="main-container">
-            <MatchPairDiv matches={data}/>
+        <div>
+            Fix Match Page
         </div>
     )
 }
 
-export default Matches;
-
-
+export default FixMatchPage;
