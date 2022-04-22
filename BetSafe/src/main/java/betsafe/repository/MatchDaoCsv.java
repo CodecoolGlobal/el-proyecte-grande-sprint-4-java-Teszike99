@@ -23,13 +23,14 @@ public class MatchDaoCsv {
     public List<Match> convertFiles(List<String> files) throws IOException {
         List<Match> matches = new ArrayList<>();
         String line = "";
-        String mapping = "BetSafe/src/main/resources/csvData/";
+        String mapping = "src/main/resources/csvData/";
         for (String path : files) {
             String bettingOfficeName = null;
             BufferedReader br = new BufferedReader(new java.io.FileReader(mapping + path));
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                Match matchModel = new Match(values[1], values[2] + "," + values[3], values[4], values[5], values[0], values[6]);
+                Match matchModel = new Match(values[1], values[2] + "," + values[3],
+                        values[4], values[5], values[0], values[6]);
                 matches.add(matchModel);
                 matchRepository.save(matchModel);
                 bettingOfficeName = values[0];
