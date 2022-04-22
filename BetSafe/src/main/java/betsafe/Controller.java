@@ -40,4 +40,9 @@ public class Controller {
     public void createDb()  throws IOException {
         betService.createDbFromCSV(new ArrayList<>(List.of("BetterBet.csv", "Esport.csv", "MegaGame.csv", "UniBet.csv")));
     }
+
+    @GetMapping("fix-match-pairs")
+    public List<List<Match>> getFixMatches(){
+        return betService.getFixMatches();
+    }
 }
