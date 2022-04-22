@@ -12,6 +12,7 @@ public class MatchModelMapping {
     }
 
     public static List<List<Match>> getBestPairs(Map<String, List<Match>> sameMatches){
+
         List<List<Match>> bestOddsPairs = new ArrayList<>();
         for (List<Match> oneGroup : sameMatches.values()){
             List<Match> matchPairs = new ArrayList<>();
@@ -27,4 +28,11 @@ public class MatchModelMapping {
         }
         return bestOddsPairs;
     }
+
+    public static List<List<Match>> getFixMatches(Map<String, List<Match>> sameMatches){
+        List<List<Match>> bestOddsPairs = new ArrayList<>();
+        return null;
+    }
+
+
 }
