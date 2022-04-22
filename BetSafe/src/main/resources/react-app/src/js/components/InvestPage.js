@@ -2,18 +2,15 @@ import {useEffect, useState} from "react";
 import {apiGet} from "../data/dataHandler";
 import MatchPair from "./MatchPair";
 const InvestPage = (props) => {
-
     const [data, setData] = useState([])
     const [investHomeText, setInvestHomeText] = useState(null);
     const [investGuestText, setInvestGuestText] = useState(null);
-    const matchPairProfitList = [];
     const matchPairList = data.map( matchPair => <MatchPair matchPairData={matchPair} investHome={investHomeText} investGuest={investGuestText} profit={true}/> );
     // get the data from db
     useEffect(() => {
         apiGet("/match-pairs")
             .then(response => {setData(response)});
     },[])
-
     // get the input values
     function getHomeInvestData(val){
         setInvestHomeText(val.target.value);
@@ -23,7 +20,7 @@ const InvestPage = (props) => {
         setInvestGuestText(val.target.value);
     }
 
-    console.log(matchPairProfitList);
+    console.log(data);
     return (
         <div className="invest-page-container">
             <div className="invest-container-title row">
