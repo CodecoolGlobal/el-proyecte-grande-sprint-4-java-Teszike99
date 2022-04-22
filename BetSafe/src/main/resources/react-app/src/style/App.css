@@ -151,6 +151,11 @@ b {
   margin-left: 25%;
 }
 
+.fix-match-page-container {
+  text-align: center;
+  margin-left: 25%;
+}
+
 .match-container {
   background-color: darkgrey;
   border: 5px solid black;
