@@ -5,7 +5,7 @@ const Body = (props) => {
     return (
         <div className="body row">
             <SportCategory/>
-            <BodyContent component={props.component}/>
+            <BodyContent component={props.component} />
         </div>
     )
 }
