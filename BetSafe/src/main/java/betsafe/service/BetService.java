@@ -50,6 +50,12 @@ public class BetService {
         return MatchModelMapping.getBestPairs(sameMatches);
     }
 
+    public List<List<Match>> getFixMatches() {
+        List<Match> allMatches = matchRepository.findAll();
+        Map<String, List<Match>> sameMatches = MatchModelMapping.getSameMatches(allMatches);
+        return MatchModelMapping.getFixMatches(sameMatches);
+    }
+
     public List<BettingOffice> getAllOffice() {
         return bettingOfficeRepository.findAll();
     }

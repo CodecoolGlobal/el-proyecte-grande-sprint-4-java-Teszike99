@@ -1,20 +1,23 @@
 import {useEffect, useState} from "react";
-import {apiGet} from "../data/dataHandler";
-import MatchPair from "./MatchPair";
+import {apiGet} from "../../data/dataHandler";
+import MatchPair from "../contentTools/MatchPair";
 const InvestPage = (props) => {
-
     const [data, setData] = useState([])
-    const [investHomeText, setInvestHomeText] = useState(null)
-    const [investGuestText, setInvestGuestText] = useState(null)
-    const matchPairProfitList = [];
-    const matchPairList = data.map( matchPair => <MatchPair matchPairData={matchPair} investHome={investHomeText} investGuest={investGuestText}/> )
-
-    // get the data from db
+    const [investHomeText, setInvestHomeText] = useState(null);
+    const [investGuestText, setInvestGuestText] = useState(null);
+    const matchPairList = data.map( matchPair => <MatchPair matchPairData={matchPair} investHome={investHomeText} investGuest={investGuestText} profit={true}/> );
+    // get the data from db\
+    console.log(props.filter)
     useEffect(() => {
-        apiGet("/match-pairs")
-            .then(response => {setData(response)});
+        if (props.filter != null){
+            apiGet(`search-sport/${props.filter}`)
+                .then(r => setData(r))
+        }
+        else {
+            apiGet("/match-pairs")
+                .then(response => {setData(response)});
+        }
     },[])
-
     // get the input values
     function getHomeInvestData(val){
         setInvestHomeText(val.target.value);
@@ -24,7 +27,7 @@ const InvestPage = (props) => {
         setInvestGuestText(val.target.value);
     }
 
-    console.log(matchPairProfitList);
+    console.log(data)
     return (
         <div className="invest-page-container">
             <div className="invest-container-title row">

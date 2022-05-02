@@ -90,7 +90,7 @@
   height: 100%;
 }
 
-.left-nav a {
+.left-nav div {
   float: left;
   color: #f2f2f2;
   text-align: left;
@@ -147,6 +147,11 @@ b {
 }
 
 .invest-page-container {
+  text-align: center;
+  margin-left: 25%;
+}
+
+.fix-match-page-container {
   text-align: center;
   margin-left: 25%;
 }
