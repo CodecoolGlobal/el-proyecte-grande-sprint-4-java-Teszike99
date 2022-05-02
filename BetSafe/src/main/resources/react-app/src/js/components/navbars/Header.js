@@ -1,4 +1,4 @@
-import Button from './Button';
+import Button from '../contentTools/Button';
 
 const loginButtonTitle = "Login"
 const loginButtonClassName = "login-button"
