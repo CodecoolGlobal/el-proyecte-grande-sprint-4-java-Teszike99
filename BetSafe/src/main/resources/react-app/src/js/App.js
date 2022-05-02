@@ -1,32 +1,31 @@
-import Header from './components/Header';
-import Body from './components/Body'
-import Navbar from './components/Navbar'
+import HomePage from "./components/appContents/HomePage";
+import TopNavbar from './components/navbars/TopNavbar'
+import InvestPage from "./components/appContents/InvestPage";
 import '../style/App.css';
-import HomePage from "./components/HomePage";
+
+import {BrowserRouter, Routes, Route } from "react-router-dom";
+import FixMatchPage from "./components/appContents/FixMatchPage";
+import LeftNavbar from "./components/navbars/LeftNavbar";
+import Header from "./components/navbars/Header";
 import {useState} from "react";
-import InvestPage from "./components/InvestPage";
-import FixMatchPage from "./components/FixMatchPage";
 
 function App() {
-    const components = [<HomePage/>, <InvestPage/>, <FixMatchPage/> ] // Need this to change body contex
-    const [componentIndex, setIndex] = useState(0); //use state hook
-    function handleClick(page){
-        if(page === "matches"){
-            setIndex(1);
-        }
-        if(page === "fix matches"){
-            setIndex(2);
-        }
-        else if(page === "home"){
-            setIndex(0);
-        }
-    }
+
+    let [filter, setFilter] = useState(null);
+
   return (
-    <div className="App">
-      <Header/>
-        <Navbar component={components[componentIndex]} onClick={handleClick}/>
-        <Body component={components[componentIndex]}/>
-    </div>
+      <div className="App">
+          <Header/>
+          <BrowserRouter>
+              <TopNavbar/>
+              <LeftNavbar setFilter={setFilter} />
+              <Routes>
+                  <Route exact path="/" element={<HomePage/>}/>
+                  <Route exact path="/invest-page" element={<InvestPage filter={filter}/>}/>
+                  <Route exact path="/fix-match-page" element={<FixMatchPage filter={filter}/>}/>
+              </Routes>
+          </BrowserRouter>
+      </div>
   );
 }
 
