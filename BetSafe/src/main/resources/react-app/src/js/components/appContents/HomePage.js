@@ -1,4 +1,4 @@
-import image from "../../images/bet.png";
+import image from "../../../images/bet.png";
 
 const HomePage = () => {
     return (
