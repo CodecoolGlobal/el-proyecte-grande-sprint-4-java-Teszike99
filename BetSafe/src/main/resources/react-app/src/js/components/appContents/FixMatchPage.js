@@ -1,15 +1,15 @@
 import {useEffect, useState} from "react";
-import {apiGet} from "../data/dataHandler";
-import MatchPair from "./MatchPair";
+import {apiGet} from "../../data/dataHandler";
+import MatchPair from "../contentTools/MatchPair";
 
-const FixMatchPage = () => {
+const FixMatchPage = (props) => {
     const [data, setData] = useState([])
     const matchPairList = data.map( matchPair => <MatchPair matchPairData={matchPair}/> );
     useEffect(() => {
         apiGet("/match-pairs")
             .then(response => {setData(response)});
     },[])
-    console.log(data)
+    console.log(props.filter)
     return (
         <div className="fix-match-page-container">
             {matchPairList}
