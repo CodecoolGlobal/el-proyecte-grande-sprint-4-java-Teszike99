@@ -7,17 +7,17 @@ const InvestPage = (props) => {
     const [investGuestText, setInvestGuestText] = useState(null);
     const matchPairList = data.map( matchPair => <MatchPair matchPairData={matchPair} investHome={investHomeText} investGuest={investGuestText} profit={true}/> );
     // get the data from db\
-    console.log(props.filter)
+    let filter = props.filter;
     useEffect(() => {
-        if (props.filter != null){
-            apiGet(`search-sport/${props.filter}`)
+        if (filter != null){
+            apiGet(`search-sport/${filter}`)
                 .then(r => setData(r))
         }
         else {
             apiGet("/match-pairs")
-                .then(response => {setData(response)});
+                .then(r => {setData(r)});
         }
-    },[])
+    },[filter])
     // get the input values
     function getHomeInvestData(val){
         setInvestHomeText(val.target.value);
