@@ -7,7 +7,5 @@ import java.util.List;
 
 public interface MatchRepository extends JpaRepository <Match, Long> {
 
-    List<Match> findMatchesByBettingOffice(String office);
-
     List<Match> findMatchesBySportType(String sport);
 }
