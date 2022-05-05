@@ -4,13 +4,25 @@ const MatchPair = (props) =>  {
     let investHome = parseFloat(props.investHome);
     let investGuest = parseFloat(props.investGuest);
     let sumInvest = investHome + investGuest;
+    let fixProfit = parseFloat(calculateProfit() * 100).toFixed(2);
+
+    function calculateProfit(){
+        let firstCaseProfit = 0;
+        let secondCaseProfit = 0;
+        if ( (secondMatch.homeOdds * firstMatch.guestOdds) > secondMatch.homeOdds + firstMatch.guestOdds){
+            firstCaseProfit = 1 - (firstMatch.homeOdds * secondMatch.guestOdds)/(firstMatch.homeOdds + secondMatch.guestOdds)
+        }
+        if ((secondMatch.guestOdds * firstMatch.homeOdds) > secondMatch.guestOdds + firstMatch.homeOdds){
+            secondCaseProfit = 1 - (firstMatch.guestOdds * secondMatch.homeOdds)/(firstMatch.guestOdds + secondMatch.homeOdds)
+        }
+        return firstCaseProfit > secondCaseProfit ? firstCaseProfit : secondCaseProfit;
+    }
     //  invest page containers
     let homeProfitContainer = <div className="odds-container">
         <h3><font color = "#ff4500">Home odds: </font><font color= "#ff4500"><b>{firstMatch.homeOdds}</b></font></h3>
         <h3>Guest odds: <font><b>{firstMatch.guestOdds}</b></font></h3>
         <h3>Profit: {investHome * parseFloat(firstMatch.homeOdds) - sumInvest}</h3>
     </div>
-
     let guestProfitContainer= <div className="odds-container">
         <h3>Home odds: <b>{secondMatch.homeOdds}</b></h3>
         <h3><font color = "#ff4500">Guest odds: </font><font color= "#ff4500"><b>{secondMatch.guestOdds}</b></font></h3>
@@ -39,6 +51,7 @@ const MatchPair = (props) =>  {
                     {props.profit ? guestProfitContainer : fixProfitContainerSecondMatch}
                 </div>
             </div>
+            <div className= "fixProfitTitle">{props.profit ? null : fixProfit.toString() + " %"}</div>
         </div>
     )
 }
