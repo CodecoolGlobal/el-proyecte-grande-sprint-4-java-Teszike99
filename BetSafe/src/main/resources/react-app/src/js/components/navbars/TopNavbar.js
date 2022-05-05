@@ -8,7 +8,6 @@ import Icon from "@material-tailwind/react/Icon";
 import Sports from "./Sports";
 import Offices from "./Offices";
 import NavLink from "@material-tailwind/react/NavLink";
-import User from "./User";
 import {Link} from "react-router-dom";
 
 const TopNavbar = (props) => {
@@ -19,13 +18,11 @@ const TopNavbar = (props) => {
             <NavbarContainer>
                 <NavbarCollapse open={openNavbar}>
                     <Nav leftSide>
-                        <NavLink ripple="light" >
-                            <Link to="/" />
+                        <NavLink href="/" ripple="light" >
                             <Icon name="home" size="xxl" />
                             Home
                         </NavLink>
-                        <NavLink ripple="light">
-                            <Link to="/invest-page"/>
+                        <NavLink href="/invest-page" ripple="light">
                             <Icon name="language" size="xxl" />
                             Profit calculator
                         </NavLink>
