@@ -6,12 +6,21 @@ const InvestPage = (props) => {
     const [investHomeText, setInvestHomeText] = useState(null);
     const [investGuestText, setInvestGuestText] = useState(null);
     const matchPairList = data.map( matchPair => <MatchPair matchPairData={matchPair} investHome={investHomeText} investGuest={investGuestText} profit={true}/> );
+    //list created to check filter type (sport or betting office)
+    let sportCategories = ["tennis", "E-sport", "Ping-Pong"];
+    let officeCategories = ["BetterBet", "Esport", "MegaGame", "UniBet"];
     // get the data from db\
     let filter = props.filter;
     useEffect(() => {
         if (filter != null){
-            apiGet(`search-sport/${filter}`)
-                .then(r => setData(r))
+            if (sportCategories.includes(filter)){
+                apiGet(`search-sport/${filter}`)
+                    .then(r => setData(r))
+            }
+            else if (officeCategories.includes(filter)){
+                apiGet(`search-office/${filter}`)
+                    .then(r => setData(r))
+            }
         }
         else {
             apiGet("/match-pairs")
@@ -36,12 +45,12 @@ const InvestPage = (props) => {
             </div>
             <div className="invest-calculate-container row">
                 <div className="col-sm-6">
-                    <label htmlFor="inveest-home-odds">Invest home odds:</label>
-                    <font color = "black"><input type="text" id="inveest-home-odds" onChange={getHomeInvestData}/></font>
+                    <label htmlFor="invest-home-odds">Invest home odds:</label>
+                    <font color = "black"><input type="text" id="invest-home-odds" onChange={getHomeInvestData}/></font>
                 </div>
                 <div className="col-sm-6">
-                    <label htmlFor="inveest-guest-odds">Invest guest odds:</label>
-                    <font color = "black"><input type="text" id="inveest-guest-odds" onChange={getGuestInvestData}/></font>
+                    <label htmlFor="invest-guest-odds">Invest guest odds:</label>
+                    <font color = "black"><input type="text" id="invest-guest-odds" onChange={getGuestInvestData}/></font>
                 </div>
             </div>
             {matchPairList}
