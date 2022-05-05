@@ -122,11 +122,4 @@ class BetServiceTest {
     }
 
 
-    @Test
-    public void getMatchByOffice_gibeBachBetmenMatches(){
-        when(matchRepository.findMatchesByBettingOffice("betmen")).thenReturn(betmen);
-        assertEquals(betmen, betService.getByBettingOffice("betmen"));
-    }
-
-
 }
