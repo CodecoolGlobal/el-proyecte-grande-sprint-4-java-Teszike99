@@ -6,7 +6,10 @@ import Nav from "@material-tailwind/react/Nav";
 import NavbarInput from "@material-tailwind/react/NavbarInput";
 import Icon from "@material-tailwind/react/Icon";
 import Sports from "./Sports";
+import Offices from "./Offices";
 import NavLink from "@material-tailwind/react/NavLink";
+import User from "./User";
+import {Link} from "react-router-dom";
 
 const TopNavbar = (props) => {
     const [openNavbar, setOpenNavbar] = useState(true);
@@ -16,11 +19,13 @@ const TopNavbar = (props) => {
             <NavbarContainer>
                 <NavbarCollapse open={openNavbar}>
                     <Nav leftSide>
-                        <NavLink href="/" ripple="light" >
+                        <NavLink ripple="light" >
+                            <Link to="/" />
                             <Icon name="home" size="xxl" />
                             Home
                         </NavLink>
-                        <NavLink href="/invest-page" ripple="light">
+                        <NavLink ripple="light">
+                            <Link to="/invest-page"/>
                             <Icon name="language" size="xxl" />
                             Profit calculator
                         </NavLink>
@@ -29,6 +34,7 @@ const TopNavbar = (props) => {
                             Fix profitable matches
                         </NavLink>
                         <Sports setFilter={props.setFilter} />
+                        <Offices setFilter={props.setFilter} />
                     </Nav>
                     <NavbarInput type="text" placeholder="Search here" />
                     <NavLink href="/profile" ripple="light">
