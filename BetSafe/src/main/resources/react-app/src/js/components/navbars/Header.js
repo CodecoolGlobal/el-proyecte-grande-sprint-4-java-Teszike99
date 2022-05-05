@@ -9,8 +9,8 @@ const Header = (props) => {
     return (
         <div className="header">
             <h1 className="header-text">BetSafe</h1>
-            <Button title = {loginButtonTitle} className = {loginButtonClassName} ></Button>
-            <Button title = {registerButtonTitle} className = {registerButtonClassName} ></Button>
+            { /*<Button title = {loginButtonTitle} className = {loginButtonClassName} ></Button>
+            <Button title = {registerButtonTitle} className = {registerButtonClassName} ></Button> */}
         </div>
     )
 }
