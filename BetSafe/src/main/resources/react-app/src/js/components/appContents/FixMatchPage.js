@@ -6,8 +6,8 @@ const FixMatchPage = (props) => {
     const [data, setData] = useState([])
     const matchPairList = data.map( matchPair => <MatchPair matchPairData={matchPair}/> );
     useEffect(() => {
-        apiGet("/match-pairs")
-            .then(response => {setData(response)});
+        apiGet("fix-match-pairs")
+            .then(r => {setData(r)});
     },[])
     console.log(props.filter)
     return (
