@@ -100,12 +100,12 @@
   font-size: 24px;
 }
 
-.left-nav a:hover {
+.left-nav div:hover {
   background-color: #ddd;
   color: black;
 }
 
-.left-nav a.active {
+.left-nav div.active {
   background-color: #44c767;
   color: white;
 }
