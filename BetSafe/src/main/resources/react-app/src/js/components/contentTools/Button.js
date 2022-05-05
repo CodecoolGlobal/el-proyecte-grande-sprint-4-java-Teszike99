@@ -1,8 +1,8 @@
 const Button = (props) => {
     return (
-        <button className={props.className}>
-            {props.title}
-        </button>
+            <button className={props.className}>
+                {props.title}
+            </button>
     )
 }
 
