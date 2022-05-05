@@ -21,34 +21,36 @@ public class Controller {
         this.betService = betService;
     }
 
-    @GetMapping("/search-office/{office}")
-    public List<Match> getMatchesByOffice(@PathVariable("office") String searchedOffice){
+    @GetMapping("search-office/{office}")
+    public List<List<Match>> getMatchesByOffice(@PathVariable("office") String searchedOffice) {
+        System.out.println(searchedOffice);
         return betService.getByBettingOffice(searchedOffice);
     }
 
+    @GetMapping("fix-match-pairs")
+    public List<List<Match>> getFixMatches() {
+        return betService.getFixMatches();
+    }
+
     @GetMapping("match-pairs")
-    public List<List<Match>> getProfitableMatchPairs(){
+    public List<List<Match>> getProfitableMatchPairs() {
         return betService.getBestOddsPairs();
     }
 
     @GetMapping("offices")
-    public List<BettingOffice> getAllOffices(){
+    public List<BettingOffice> getAllOffices() {
         return betService.getAllOffice();
     }
 
     @GetMapping("search-sport/{sport}")
-    public List<List<Match>> getMatchesBySport(@PathVariable("sport") String searchedSport){
+    public List<List<Match>> getMatchesBySport(@PathVariable("sport") String searchedSport) {
         return betService.getBySport(searchedSport);
     }
 
     //for reading the CSV
     @PostMapping(value = "/in")
-    public void createDb()  throws IOException {
+    public void createDb() throws IOException {
         betService.createDbFromCSV(new ArrayList<>(List.of("BetterBet.csv", "Esport.csv", "MegaGame.csv", "UniBet.csv")));
     }
 
-    @GetMapping("fix-match-pairs")
-    public List<List<Match>> getFixMatches(){
-        return betService.getFixMatches();
-    }
 }
