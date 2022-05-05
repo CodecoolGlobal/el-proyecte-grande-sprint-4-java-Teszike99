@@ -34,8 +34,9 @@ public class BetService {
         matchDaoCsv.convertFiles(offices);
     }
 
-    public List<Match> getByBettingOffice(String office) {
-        return matchRepository.findMatchesByBettingOffice(office);
+    public List<List<Match>> getByBettingOffice(String office) {
+        List<List<Match>> allMatches = this.getBestOddsPairs();
+        return MatchModelMapping.getBestMatchPairsByOffice(allMatches, office);
     }
 
     public List<List<Match>> getBySport(String searchedSport) {
@@ -51,9 +52,8 @@ public class BetService {
     }
 
     public List<List<Match>> getFixMatches() {
-        List<Match> allMatches = matchRepository.findAll();
-        Map<String, List<Match>> sameMatches = MatchModelMapping.getSameMatches(allMatches);
-        return MatchModelMapping.getFixMatches(sameMatches);
+        List<List<Match>> allMatches = this.getBestOddsPairs();
+        return MatchModelMapping.getFixMatches(allMatches);
     }
 
     public List<BettingOffice> getAllOffice() {
