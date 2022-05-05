@@ -46,7 +46,6 @@ public class Controller {
     public List<List<Match>> getMatchesBySport(@PathVariable("sport") String searchedSport) {
         return betService.getBySport(searchedSport);
     }
-
     //for reading the CSV
     @PostMapping(value = "/in")
     public void createDb() throws IOException {
