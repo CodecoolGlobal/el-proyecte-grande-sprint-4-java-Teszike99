@@ -8,17 +8,26 @@ import FixMatchPage from "./components/appContents/FixMatchPage";
 import LeftNavbar from "./components/navbars/LeftNavbar";
 import Header from "./components/navbars/Header";
 import {useState} from "react";
-import Registration from "./components/contentTools/Registration";
 import Login from "./components/contentTools/Login";
-import Register from "./components/contentTools/Registration";
+import Registration from "./components/contentTools/Registration";
+import Profile from "./components/contentTools/Profile";
 
 function App() {
 
     let [filter, setFilter] = useState(null);
 
+    const [currentUser, setCurrentUser] = useState("");
+
+    const logOut = function() {
+        window.localStorage.removeItem("authToken");
+        setCurrentUser("");
+    }
+
+
+
   return (
       <div className="App">
-          <Header/>
+          <Header logOut={logOut} currentUser={currentUser} />
           <BrowserRouter>
               <TopNavbar/>
               <LeftNavbar setFilter={setFilter} />
@@ -26,8 +35,9 @@ function App() {
                   <Route exact path="/" element={<HomePage/>}/>
                   <Route exact path="/invest-page" element={<InvestPage filter={filter}/>}/>
                   <Route exact path="/fix-match-page" element={<FixMatchPage filter={filter}/>}/>
-                  <Route exact path="/register" element={<Register/>}/>
-                  <Route exact path="/login" element={<Login/>}/>
+                  <Route exact path="/register" element={<Registration/>}/>
+                  <Route exact path="/sign-in" element={<Login/>}/>
+                  <Route exact path="/profile" element={<Profile currentUser={currentUser} /> }/>
               </Routes>
           </BrowserRouter>
       </div>
