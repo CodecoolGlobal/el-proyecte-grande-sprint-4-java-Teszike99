@@ -1,7 +1,10 @@
+
+import '../style/App.css';
+import "@material-tailwind/react/tailwind.css";
+
 import HomePage from "./components/appContents/HomePage";
 import TopNavbar from './components/navbars/TopNavbar'
 import InvestPage from "./components/appContents/InvestPage";
-import '../style/App.css';
 
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 import FixMatchPage from "./components/appContents/FixMatchPage";
@@ -20,8 +23,7 @@ function App() {
       <div className="App">
           <Header/>
           <BrowserRouter>
-              <TopNavbar/>
-              <LeftNavbar setFilter={setFilter} />
+              <TopNavbar setFilter={setFilter} />
               <Routes>
                   <Route exact path="/" element={<HomePage/>}/>
                   <Route exact path="/invest-page" element={<InvestPage filter={filter}/>}/>
