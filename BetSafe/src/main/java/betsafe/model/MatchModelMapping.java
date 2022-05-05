@@ -1,6 +1,7 @@
 package betsafe.model;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
@@ -29,9 +30,31 @@ public class MatchModelMapping {
         return bestOddsPairs;
     }
 
-    public static List<List<Match>> getFixMatches(Map<String, List<Match>> sameMatches){
-        List<List<Match>> bestOddsPairs = new ArrayList<>();
-        return null;
+    public static List<List<Match>> getFixMatches(List<List<Match>> allMatch){
+        return allMatch.stream()
+                .filter(matchPair -> chechkIfProfitableMatchPair(matchPair.get(0), matchPair.get(1)))
+                .collect(Collectors.toList());
+    }
+
+    public static List<List<Match>> getBestMatchPairsByOffice(List<List<Match>> allMatch, String office){
+        return allMatch.stream()
+                .filter(matchPair -> checkIfOffice(matchPair, office))
+                .collect(Collectors.toList());
+    }
+
+    private static boolean checkIfOffice(List<Match> matchPair, String office) {
+        return matchPair.get(0).getBettingOffice().equals(office) || matchPair.get(1).getBettingOffice().equals(office);
+    }
+
+    public static boolean chechkIfProfitableMatchPair(Match firstMatch, Match secondMatch){
+        boolean firstCase = (secondMatch.getHomeOdds() * firstMatch.getGuestOdds()) >= secondMatch.getHomeOdds() + firstMatch.getGuestOdds();
+        boolean secondCase = (secondMatch.getGuestOdds() * firstMatch.getHomeOdds()) >= secondMatch.getGuestOdds() + firstMatch.getHomeOdds();
+        if( firstCase || secondCase ){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 
