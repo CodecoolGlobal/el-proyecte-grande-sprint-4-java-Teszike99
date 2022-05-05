@@ -197,3 +197,7 @@ b {
   text-align: justify;
   color: white;
 }
+
+.register-container {
+  float: right;
+}
