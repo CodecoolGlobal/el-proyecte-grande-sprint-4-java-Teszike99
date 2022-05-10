@@ -4,7 +4,7 @@ const MatchPair = (props) =>  {
     let investHome = parseFloat(props.investHome);
     let investGuest = parseFloat(props.investGuest);
     let sumInvest = investHome + investGuest;
-    let fixProfit = parseFloat(calculateProfit() * 100).toFixed(2);
+    let fixProfit = parseFloat(calculateProfit() * 100).toFixed(2) < 0 ? parseFloat(calculateProfit() * 100).toFixed(2) * (-1) : parseFloat(calculateProfit() * 100).toFixed(2);
 
     function calculateProfit(){
         let firstCaseProfit = 0;

@@ -34,7 +34,7 @@ const TopNavbar = (props) => {
                         <Offices setFilter={props.setFilter} />
                     </Nav>
                     <NavbarInput type="text" placeholder="Search here" />
-                    <NavLink href="/profile" ripple="light">
+                    <NavLink href="/register" ripple="light">
                         <Icon name="account_circle" size="xxl" />
                     </NavLink>
                 </NavbarCollapse>

@@ -183,6 +183,21 @@ b {
   color: white;
 }
 
+.fixProfitTitle{
+  color:red;
+}
+
 .register-container {
-  float: right;
+  display: flex;
+  justify-content: center;
+}
+
+.register-container label{
+  color: white;
+}
+
+.register-container button{
+  padding: 8px;
+  margin-top: 15px;
+  background-color: white;
 }
