@@ -1,30 +1,41 @@
 package betsafe;
 
 import betsafe.model.User;
-import betsafe.repository.UserRepository;
-import betsafe.security.jwt.AuthenticationRequest;
-import betsafe.security.jwt.AuthenticationResponse;
-import betsafe.security.jwt.JwtUtil;
+import betsafe.security.jwt.JwtRequest;
+import betsafe.security.jwt.JwtResponse;
+import betsafe.security.jwt.JwtTokenUtil;
 import betsafe.service.UserService;
+import org.apache.commons.logging.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/")
 public class UserController {
 
-    private final AuthenticationManager authenticationManager;
-    private final UserService userService;
-    private final JwtUtil jwtUtil;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-    public UserController(UserService userService, JwtUtil jwtUtil, AuthenticationManager authenticationManager) {
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
+    private final UserService userService;
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
+
+
+    public UserController(UserService userService, AuthenticationManager authenticationManager) {
         this.userService = userService;
-        this.jwtUtil = jwtUtil;
         this.authenticationManager = authenticationManager;
     }
 
@@ -35,29 +46,43 @@ public class UserController {
         return user;
     }
 
-    @PostMapping("/sign-in")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-        System.out.println(authenticationRequest.getUsername());
-        try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            authenticationRequest.getUsername(),
-                            authenticationRequest.getPassword())
-            );
-        } catch (BadCredentialsException e){
-            throw new Exception("Bad username or password");
-        }
-        final UserDetails userDetails = userService.loadUserByUsername(
-                authenticationRequest.getUsername());
-        final String jwt = jwtUtil.generateToken(userDetails);
-
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+    @RequestMapping({ "/hello" })
+    public String firstPage() {
+        return "Hello World";
     }
 
-    @GetMapping("/user")
-    public User secret(@RequestHeader(name="Authorization") String token){
-        String username = jwtUtil.extractUsername(token.substring(7));
-        return (User) userService.loadUserByUsername(username);
+    @PostMapping(value = "/authenticate")
+    public ResponseEntity<?> generateAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
+            throws Exception {
+        System.out.println(authenticationRequest);
+        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+
+        final UserDetails userDetails = userService
+                .loadUserByUsername(authenticationRequest.getUsername());
+        try {
+            final String token = jwtTokenUtil.generateToken(userDetails);
+            return ResponseEntity.ok(new JwtResponse(token));
+        }
+        catch (Throwable e )
+        {
+            logger.info(e.getMessage());
+            throw e;
+        }
+
+
+
+    }
+
+    private void authenticate(String username, String password) throws Exception {
+        Objects.requireNonNull(username);
+        Objects.requireNonNull(password);
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+        } catch (DisabledException e) {
+            throw new Exception("USER_DISABLED", e);
+        } catch (BadCredentialsException e) {
+            throw new Exception("INVALID_CREDENTIALS", e);
+        }
     }
 
 

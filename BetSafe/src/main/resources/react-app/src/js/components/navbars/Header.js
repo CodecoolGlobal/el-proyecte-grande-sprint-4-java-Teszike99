@@ -12,7 +12,7 @@ const Header = (props) => {
                 </p>
                 :
                 <p>
-                    <a href="/sign-in">Log in</a>
+                    <a href="/authenticate">Login</a>
                 </p>}
             {props.currentUser ?
                 <p><a onClick={() => {

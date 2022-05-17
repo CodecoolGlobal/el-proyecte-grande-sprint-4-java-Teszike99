@@ -3,7 +3,7 @@ import TopNavbar from './components/navbars/TopNavbar'
 import InvestPage from "./components/appContents/InvestPage";
 import '../style/App.css';
 
-import {BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import FixMatchPage from "./components/appContents/FixMatchPage";
 import LeftNavbar from "./components/navbars/LeftNavbar";
 import Header from "./components/navbars/Header";
@@ -23,6 +23,10 @@ function App() {
         setCurrentUser("");
     }
 
+    const SignInWrapper = ({ children, currentUser }) => {
+        return currentUser ? <Navigate to="/profile" replace /> : children;
+    };
+
 
 
   return (
@@ -36,7 +40,9 @@ function App() {
                   <Route exact path="/invest-page" element={<InvestPage filter={filter}/>}/>
                   <Route exact path="/fix-match-page" element={<FixMatchPage filter={filter}/>}/>
                   <Route exact path="/register" element={<Registration/>}/>
-                  <Route exact path="/sign-in" element={<Login/>}/>
+                  <Route exact path="/authenticate" element={<SignInWrapper currentUser={currentUser}>
+                      <Login setCurrentUser={setCurrentUser}/>
+                  </SignInWrapper>}/>
                   <Route exact path="/profile" element={<Profile currentUser={currentUser} /> }/>
               </Routes>
           </BrowserRouter>

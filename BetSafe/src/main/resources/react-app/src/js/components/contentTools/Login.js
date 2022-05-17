@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 async function loginUser(loginData) {
-    return fetch('/sign-in', {
+    return fetch('/authenticate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
