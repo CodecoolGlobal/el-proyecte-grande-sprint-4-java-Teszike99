@@ -1,20 +1,13 @@
 import {useState} from "react";
+import {apiPost} from "../../data/dataHandler";
+import {useNavigate} from "react-router-dom";
 
-async function loginUser(loginData) {
-    return fetch('/authenticate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginData)
-    })
-        .then(data => data.json())
-}
 
 export default function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
 
     const handleUsername = function(event) {
         setUsername(event.target.value)
@@ -25,17 +18,26 @@ export default function Login(props) {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const token = await loginUser({
+        await loginUser({
             username,
             password
         });
-        if (token.jwt) {
+    }
+
+    function setUpLogin(token) {
+        if(token) {
+            window.localStorage.setItem("token", token);
             props.setCurrentUser(username);
-            window.localStorage.setItem("authToken", token.jwt);
-        } else {
-            setError("Failed to log in.")
-            console.log("ooooo")
         }
+        else {
+            setError("Failed to log in.")
+        }
+    }
+
+    async function loginUser(loginData) {
+        return apiPost("/authenticate",loginData)
+            .then(r => {setUpLogin(r)});
+
     }
 
     return (

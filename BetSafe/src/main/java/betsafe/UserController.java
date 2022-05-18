@@ -17,6 +17,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 @CrossOrigin
@@ -46,31 +48,14 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping({ "/hello" })
-    public String firstPage() {
-        return "Hello World";
-    }
-
     @PostMapping(value = "/authenticate")
     public ResponseEntity<?> generateAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
             throws Exception {
-        System.out.println(authenticationRequest);
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-
         final UserDetails userDetails = userService
                 .loadUserByUsername(authenticationRequest.getUsername());
-        try {
-            final String token = jwtTokenUtil.generateToken(userDetails);
-            return ResponseEntity.ok(new JwtResponse(token));
-        }
-        catch (Throwable e )
-        {
-            logger.info(e.getMessage());
-            throw e;
-        }
-
-
-
+        final String token = jwtTokenUtil.generateToken(userDetails);
+        return ResponseEntity.ok(new JwtResponse(token));
     }
 
     private void authenticate(String username, String password) throws Exception {

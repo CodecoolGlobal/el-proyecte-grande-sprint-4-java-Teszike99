@@ -10,7 +10,6 @@ import Header from "./components/navbars/Header";
 import {useState} from "react";
 import Login from "./components/contentTools/Login";
 import Registration from "./components/contentTools/Registration";
-import Profile from "./components/contentTools/Profile";
 
 function App() {
 
@@ -19,12 +18,13 @@ function App() {
     const [currentUser, setCurrentUser] = useState("");
 
     const logOut = function() {
-        window.localStorage.removeItem("authToken");
+        window.localStorage.removeItem("token");
         setCurrentUser("");
+        return <Navigate to="/" />;
     }
 
     const SignInWrapper = ({ children, currentUser }) => {
-        return currentUser ? <Navigate to="/profile" replace /> : children;
+        return currentUser ? <Navigate to="/" replace /> : children;
     };
 
 
@@ -43,7 +43,6 @@ function App() {
                   <Route exact path="/authenticate" element={<SignInWrapper currentUser={currentUser}>
                       <Login setCurrentUser={setCurrentUser}/>
                   </SignInWrapper>}/>
-                  <Route exact path="/profile" element={<Profile currentUser={currentUser} /> }/>
               </Routes>
           </BrowserRouter>
       </div>

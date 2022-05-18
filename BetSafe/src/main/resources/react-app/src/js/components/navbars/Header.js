@@ -1,14 +1,10 @@
-import Button from '../contentTools/Button';
-import {Link} from "react-router-dom";
-
-
 const Header = (props) => {
     return (
         <div className="header">
             <h1 className="header-text">BetSafe</h1>
             {props.currentUser ?
                 <p>
-                    <a href="/profile">{props.currentUser}</a>
+                    {props.currentUser}
                 </p>
                 :
                 <p>
