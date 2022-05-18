@@ -1,0 +1,30 @@
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "username": "Benec",
+  "password": "123456"
+}
+
+### Log in
+
+POST http://localhost:8080/authenticate
+Content-type: application/json
+
+{
+  "username": "Benec",
+  "password": "123456"
+}
+
+
+### Use the token, Luke
+
+GET http://localhost:8080/fix-match-pairs
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJCZW5lYyIsImlhdCI6MTY1Mjc5NTQ5NiwiZXhwIjoxNjUyODEzNDk2fQ.XPvmfYPeGWqtSncl-82Q8cmyiUOo30MZtcwCxG3r25fVBwVwQtGDolGro9c1lH5Z-cYjspoKUAMdQaLXbIqihA
+
+
+### Without token
+
+GET http://localhost:8080/fix-match-pairs
+Accept: application/json

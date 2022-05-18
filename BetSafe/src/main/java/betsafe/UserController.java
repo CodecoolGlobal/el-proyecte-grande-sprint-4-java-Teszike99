@@ -1,28 +1,75 @@
 package betsafe;
 
 import betsafe.model.User;
+import betsafe.security.jwt.JwtRequest;
+import betsafe.security.jwt.JwtResponse;
+import betsafe.security.jwt.JwtTokenUtil;
 import betsafe.service.UserService;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.apache.commons.logging.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
-@Controller
-@AllArgsConstructor
+@CrossOrigin
+@RestController
+@RequestMapping("/")
 public class UserController {
 
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
     private final UserService userService;
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
+
+
+    public UserController(UserService userService, AuthenticationManager authenticationManager) {
+        this.userService = userService;
+        this.authenticationManager = authenticationManager;
+    }
 
 
     @PostMapping("/register")
     public @ResponseBody User registerUser(@RequestBody User user) {
-        System.out.println("asd");
         userService.signUpUser(user);
         return user;
     }
+
+    @PostMapping(value = "/authenticate")
+    public ResponseEntity<?> generateAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
+            throws Exception {
+        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+        final UserDetails userDetails = userService
+                .loadUserByUsername(authenticationRequest.getUsername());
+        final String token = jwtTokenUtil.generateToken(userDetails);
+        return ResponseEntity.ok(new JwtResponse(token));
+    }
+
+    private void authenticate(String username, String password) throws Exception {
+        Objects.requireNonNull(username);
+        Objects.requireNonNull(password);
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+        } catch (DisabledException e) {
+            throw new Exception("USER_DISABLED", e);
+        } catch (BadCredentialsException e) {
+            throw new Exception("INVALID_CREDENTIALS", e);
+        }
+    }
+
 
 }
 

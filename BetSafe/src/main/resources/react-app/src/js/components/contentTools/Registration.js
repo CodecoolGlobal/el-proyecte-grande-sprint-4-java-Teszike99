@@ -8,17 +8,10 @@ async function registerUser(user) {
         },
         body: JSON.stringify(user)
     })
-        .then(response => {
-            const contentType = response.headers.get("content-type");
-            if (contentType && contentType.indexOf("application/json") !== -1) {
-                return response.json();
-            } else {
-                return response.text();
-            }
-        });
+        .then(response => response.json());
 }
 
-export default function Register() {
+export default function Registration() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
