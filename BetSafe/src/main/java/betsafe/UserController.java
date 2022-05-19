@@ -5,9 +5,7 @@ import betsafe.security.jwt.JwtRequest;
 import betsafe.security.jwt.JwtResponse;
 import betsafe.security.jwt.JwtTokenUtil;
 import betsafe.service.UserService;
-import org.apache.commons.logging.Log;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,8 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Objects;
 
 @CrossOrigin
@@ -33,7 +30,6 @@ public class UserController {
     private JwtTokenUtil jwtTokenUtil;
 
     private final UserService userService;
-    private Logger logger = LoggerFactory.getLogger(UserController.class);
 
 
     public UserController(UserService userService, AuthenticationManager authenticationManager) {
@@ -43,9 +39,13 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public @ResponseBody User registerUser(@RequestBody User user) {
-        userService.signUpUser(user);
-        return user;
+    public ResponseEntity<?> registerUser(@RequestBody User user) {
+        if (!userService.checkUsernameExist(user)) {
+            userService.signUpUser(user);
+            return ResponseEntity.ok(user);
+        } else {
+            return (ResponseEntity<?>) ResponseEntity.status(500);
+        }
     }
 
     @PostMapping(value = "/authenticate")

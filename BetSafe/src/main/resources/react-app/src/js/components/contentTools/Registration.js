@@ -30,12 +30,12 @@ export default function Registration() {
             username,
             password
         });
-        if (typeof response == "string"){
-            setError(response);
-            setMessage("")
-        } else {
-            setError("");
+        if(response.status === 500) {
+            setMessage("Username is exist");
+        }
+        else {
             setMessage("Successful registration");
+
         }
     }
 

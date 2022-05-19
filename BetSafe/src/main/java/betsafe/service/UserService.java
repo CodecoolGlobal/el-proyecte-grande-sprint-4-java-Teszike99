@@ -10,7 +10,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor
@@ -28,6 +31,10 @@ public class UserService implements UserDetailsService {
 
         userRepository.save(user);
 
+    }
+
+    public boolean checkUsernameExist(User user) {
+        return userRepository.existsUserByUsername(user.getUsername());
     }
 
     @Override
