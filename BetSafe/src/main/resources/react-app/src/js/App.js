@@ -35,7 +35,7 @@ function App() {
       <div className="App">
           <Header logOut={logOut} currentUser={currentUser} />
           <BrowserRouter>
-              <TopNavbar setFilter={setFilter} />
+              <TopNavbar setFilter={setFilter} logOut={logOut} currentUser={currentUser} />
               <Routes>
                   <Route exact path="/" element={<HomePage/>}/>
                   <Route exact path="/invest-page" element={<InvestPage filter={filter}/>}/>
