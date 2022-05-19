@@ -1,5 +1,7 @@
 import Sports from "./Sports";
 import Offices from "./Offices";
+import User from "./User"
+import Registration from "../contentTools/Registration";
 
 const TopNavbar = (props) => {
 
@@ -22,15 +24,14 @@ const TopNavbar = (props) => {
                         <Offices setFilter={props.setFilter} />
                         <Sports setFilter={props.setFilter} />
                     </ul>
+                    <User logOut={props.logOut} currentUser={props.currentUser}/>
                     <div
-                        className="relative flex items-center text-2xl bg-white bg-opacity-20 py-1 px-3 rounded-lg">
+                        className="relative flex items-center text-xl bg-white bg-opacity-20 py-1 px-3 rounded-lg">
                         <span className="material-icons text-white text-2xl mr-2">search</span><input type="text"
                                                                                                      placeholder="Search here"
                                                                                                      className="bg-transparent border-none text-xl leading-snug text-white w-full font-normal placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-0"></input>
                     </div>
-                    <a href="/register"
-                       className="false false px-5 py-4 flex gap-1 items-center text-2xl uppercase font-medium leading text-white rounded-lg nav-direct"><span
-                        className="material-icons undefined undefined leading-none">account_circle</span></a></div>
+                </div>
             </div>
         </nav>
     );
