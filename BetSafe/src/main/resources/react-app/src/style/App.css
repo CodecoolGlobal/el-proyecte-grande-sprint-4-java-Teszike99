@@ -53,13 +53,12 @@
 }
 
 .new-navbar {
-  overflow: hidden;
   border: 10px solid #1f1f1f;
   background-color: #333;
 }
 
 
-.new-navbar a:hover{
+.nav-direct:hover{
   cursor: pointer;
   background-color: #ddd;
   color: black;
@@ -118,17 +117,44 @@ b {
   text-align: justify;
 }
 
+.match-odds-title{
+  display: flex;
+  flex-wrap: nowrap;
+}
+#bestHome{
+  padding-left: 20%;
+}
+
+#bestGuest{
+padding-left: 40%;
+}
+
 .match-pair-container {
   font-family: "Times New Roman", Times, serif;
   text-align: center;
   font-size: large;
   color: black;
   border: 5px;
-  border: 10px solid #333333;
+  border: 5px solid #333333;
   border-radius: 25px;
   padding: 25px;
-  margin-top: 10px;
+  margin-top: 30px;
   width: 70%;
+  box-shadow: 10px 10px 5px 5px gray;
+}
+
+.invest-calculate-container{
+  font-family: "Times New Roman", Times, serif;
+  color: #f2f2f2;
+  text-align: center;
+  font-size: large;
+  border: 5px;
+  border: 5px solid #333333;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 25px;
+  width: 70%;
+  box-shadow: 10px 10px 5px 5px gray;
 }
 
 .invest-page-container {
@@ -158,15 +184,6 @@ b {
   text-align: left;
 }
 
-.invest-calculate-container {
-  color: #f2f2f2;
-  width: 70%;
-  height: 50px ;
-  border-radius: 8px;
-  text-align: center;
-  border: 5px solid black;
-}
-
 .invest-container-title {
   color: #f2f2f2;
   width: 70%;
@@ -175,6 +192,7 @@ b {
 
 .match-title {
   color: #f2f2f2;
+
 }
 
 .matches-text {
@@ -200,4 +218,81 @@ b {
   padding: 8px;
   margin-top: 15px;
   background-color: white;
+}
+
+.dropbtn {
+  background-color: #3333;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 50;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  z-index: 9999;
+  cursor: pointer;
+  font-size: larger;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #ddd;
+  color: black;
+}
+
+
+#batman{
+  max-width: 80px;
+}
+
+#bat_title{
+  padding-left: 10px;
+  max-width: 500px;
+}
+
+#bats2{
+  padding-left: 200px;
+}
+
+#bats1{
+  padding-right: 200px;
+}
+
+#players{
+  font-size: 35px;
+}
+
+#time{
+  font-size: 24px;
+}
+
+#sport{
+  text-align: right;
+  padding-right: 10px;
 }
