@@ -57,7 +57,7 @@ const MatchPair = (props) =>  {
                     {props.profit ? guestProfitContainer : fixProfitContainerSecondMatch}
                 </div>
             </div>
-            <div className= "fixProfitTitle">{props.profit ? null : fixProfit.toString() + " %"}</div>
+            <div className= "fixProfitTitle">{props.profit ? null : "The profit percentage: " + fixProfit.toString() + " %"}</div>
         </div>
     )
 }
