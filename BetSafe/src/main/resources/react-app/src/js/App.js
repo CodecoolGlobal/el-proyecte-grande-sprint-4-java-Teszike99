@@ -8,7 +8,6 @@ import InvestPage from "./components/appContents/InvestPage";
 
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import FixMatchPage from "./components/appContents/FixMatchPage";
-import LeftNavbar from "./components/navbars/LeftNavbar";
 import Header from "./components/navbars/Header";
 import {useState} from "react";
 import Login from "./components/contentTools/Login";

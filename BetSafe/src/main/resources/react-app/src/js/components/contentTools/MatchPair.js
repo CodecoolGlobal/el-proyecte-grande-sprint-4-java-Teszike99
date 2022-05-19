@@ -4,7 +4,7 @@ const MatchPair = (props) =>  {
     let investHome = parseFloat(props.investHome);
     let investGuest = parseFloat(props.investGuest);
     let sumInvest = investHome + investGuest;
-    let fixProfit = parseFloat(calculateProfit() * 100).toFixed(2);
+    let fixProfit = parseFloat(calculateProfit() * 100).toFixed(2) < 0 ? parseFloat(calculateProfit() * 100).toFixed(2) * (-1) : parseFloat(calculateProfit() * 100).toFixed(2);
 
     function calculateProfit(){
         let firstCaseProfit = 0;
@@ -40,8 +40,14 @@ const MatchPair = (props) =>  {
 
     return (
         <div className= "match-pair-container row">
-            <div className="match-title row">{firstMatch.matchDate} {firstMatch.players}</div>
-            <div className="match-content-container">
+            <div className="match-title row" id="sport">{firstMatch.sportType}</div>
+            <div className="match-title row" id="players">{firstMatch.players.replace(',', " - ")}</div>
+            <div className="match-title row" id="time">{firstMatch.matchDate.replace(firstMatch.matchDate.charAt(0), firstMatch.matchDate.charAt(0).toUpperCase())} </div>
+            <div className="match-odds-title row ">
+                <h3 className="match-title row" id="bestHome">Best home odds</h3>
+                <h3 className="match-title row" id="bestGuest">Best guest odds</h3>
+            </div>
+            <div className="match-content-container m-4">
                 <div className="match-container first-match col-sm-6">
                     <h3><b>{firstMatch.bettingOffice}</b></h3>
                     {props.profit ? homeProfitContainer : fixProfitContainerFirstMatch}
