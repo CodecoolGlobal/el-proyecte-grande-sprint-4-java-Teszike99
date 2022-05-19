@@ -157,6 +157,13 @@ padding-left: 40%;
   box-shadow: 10px 10px 5px 5px gray;
 }
 
+#invest-odds{
+  border-radius: 10px;
+  width: 100px;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
 .invest-page-container {
   text-align: center;
   margin-left: 25%;
@@ -202,7 +209,8 @@ padding-left: 40%;
 }
 
 .fixProfitTitle{
-  color:red;
+  color:white;
+  padding-top: 10px;
 }
 
 .register-container {
@@ -252,6 +260,7 @@ padding-left: 40%;
   z-index: 9999;
   cursor: pointer;
   font-size: larger;
+  border-radius: 10px;
 }
 
 .dropdown-content a:hover {
