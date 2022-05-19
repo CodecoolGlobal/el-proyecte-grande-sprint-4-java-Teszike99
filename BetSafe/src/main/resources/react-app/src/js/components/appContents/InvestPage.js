@@ -43,11 +43,11 @@ const InvestPage = (props) => {
             <div className="invest-calculate-container row">
                 <div className="col-sm-6">
                     <label htmlFor="invest-home-odds" >Invest home odds:</label>
-                    <font color = "black"><input type="number" id="invest-home-odds" defaultValue={0} onChange={getHomeInvestData}/></font>
+                    <font color = "black"><input type="number" id="invest-odds" defaultValue={0} onChange={getHomeInvestData}/></font>
                 </div>
                 <div className="col-sm-6">
                     <label htmlFor="invest-guest-odds">Invest guest odds:</label>
-                    <font color = "black"><input type="number" id="invest-guest-odds" defaultValue={0} onChange={getGuestInvestData}/></font>
+                    <font color = "black"><input type="number" id="invest-odds" defaultValue={0} onChange={getGuestInvestData}/></font>
                 </div>
             </div>
             {matchPairList}
