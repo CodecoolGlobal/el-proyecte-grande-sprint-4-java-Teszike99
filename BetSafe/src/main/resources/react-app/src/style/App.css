@@ -1,4 +1,9 @@
-
+.sub-title{
+  color: white;
+  font-size: large;
+  padding-left: 50px;
+  padding-top: 50px;
+}
 .header {
   border: 10px solid #1f1f1f;
   display: flex;
@@ -110,6 +115,13 @@
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+.home-image-container{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
 }
 
 b {
@@ -283,10 +295,6 @@ padding-left: 40%;
 #bat_title{
   padding-left: 10px;
   max-width: 500px;
-}
-
-#bats2{
-  padding-left: 200px;
 }
 
 #bats1{

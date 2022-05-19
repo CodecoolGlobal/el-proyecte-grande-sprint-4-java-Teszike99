@@ -4,8 +4,8 @@ const HomePage = () => {
     return (
         <div>
             <div className="home-container">
-                <h1>Live your life, free from risk</h1><br></br>
-                <img className="image-container" src={image} alt=''/>
+
+                <img className="home-image-container" src={image} alt=''/>
                 <br/><br/><br/>
                 <b>
                     BetSafe is an online betting company that offers online sports betting.
