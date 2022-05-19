@@ -1,45 +1,38 @@
-import React, { useState } from "react";
-import Navbar from "@material-tailwind/react/Navbar";
-import NavbarContainer from "@material-tailwind/react/NavbarContainer";
-import NavbarCollapse from "@material-tailwind/react/NavbarCollapse";
-import Nav from "@material-tailwind/react/Nav";
-import NavbarInput from "@material-tailwind/react/NavbarInput";
-import Icon from "@material-tailwind/react/Icon";
 import Sports from "./Sports";
 import Offices from "./Offices";
-import NavLink from "@material-tailwind/react/NavLink";
-import {Link} from "react-router-dom";
 
 const TopNavbar = (props) => {
-    const [openNavbar, setOpenNavbar] = useState(true);
 
     return (
-        <Navbar color="#333" navbar className="new-navbar">
-            <NavbarContainer>
-                <NavbarCollapse open={openNavbar}>
-                    <Nav leftSide>
-                        <NavLink href="/" ripple="light" >
-                            <Icon name="home" size="xxl" />
-                            Home
-                        </NavLink>
-                        <NavLink href="/invest-page" ripple="light">
-                            <Icon name="language" size="xxl" />
-                            Profit calculator
-                        </NavLink>
-                        <NavLink href="/fix-match-page" ripple="light">
-                            <Icon name="settings" size="xxl" />
-                            Fix profitable matches
-                        </NavLink>
-                        <Sports setFilter={props.setFilter} />
+
+
+        <nav className="flex flex-wrap items-center justify-between py-2.5 px-3 mb-3 undefined false new-navbar">
+            <div className="container max-w-full px-4 mx-auto flex flex-wrap items-center justify-between undefined">
+                <div className="lg:flex flex-grow items-center block undefined">
+                    <ul className="flex lg:items-center flex-col lg:flex-row list-none mr-auto undefined">
+                        <a href="/" className="false false px-5 py-4 flex gap-1 items-center text-xl uppercase font-medium leading text-white rounded-lg nav-direct"><span
+                        className="material-icons undefined undefined leading-none ">home</span>Home</a><a
+                        href="/invest-page"
+                        className="false false px-5 py-4 flex gap-1 items-center text-xl uppercase font-medium leading text-white rounded-lg nav-direct"><span
+                        className="material-icons undefined undefined leading-none ">language</span>Profit calculator</a><a
+                        href="/fix-match-page"
+                        className="false false px-5 py-4 flex gap-1 items-center text-xl uppercase font-medium leading text-white rounded-lg nav-direct"><span
+                        className="material-icons undefined undefined leading-none ">settings</span>Fix profitable
+                        matches</a>
                         <Offices setFilter={props.setFilter} />
-                    </Nav>
-                    <NavbarInput type="text" placeholder="Search here" />
-                    <NavLink href="/register" ripple="light">
-                        <Icon name="account_circle" size="xxl" />
-                    </NavLink>
-                </NavbarCollapse>
-            </NavbarContainer>
-        </Navbar>
+                        <Sports setFilter={props.setFilter} />
+                    </ul>
+                    <div
+                        className="relative flex items-center text-2xl bg-white bg-opacity-20 py-1 px-3 rounded-lg">
+                        <span className="material-icons text-white text-2xl mr-2">search</span><input type="text"
+                                                                                                     placeholder="Search here"
+                                                                                                     className="bg-transparent border-none text-xl leading-snug text-white w-full font-normal placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-0"></input>
+                    </div>
+                    <a href="/register"
+                       className="false false px-5 py-4 flex gap-1 items-center text-2xl uppercase font-medium leading text-white rounded-lg nav-direct"><span
+                        className="material-icons undefined undefined leading-none">account_circle</span></a></div>
+            </div>
+        </nav>
     );
 }
 

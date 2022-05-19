@@ -1,43 +1,26 @@
 import React from "react";
-import Dropdown from "@material-tailwind/react/Dropdown"
-import DropdownLink from "@material-tailwind/react/DropdownLink"
-import NavLink from "@material-tailwind/react/NavLink";
 
 const SportDropdown = (props) => {
     return (
-        <NavLink className="new-navbar">
-        <Dropdown
-            color="dark"
-            placement="bottom-start"
-            buttonText="Sports"
-            buttonType="filled"
-            size="lg"
-            rounded={false}
-            block={false}
-            ripple="dark"
-        >
-            <DropdownLink
-                color="#1f1f1f;"
-                ripple="light"
-                onClick={_event => props.setFilter("tennis")}
-            >
-                Tennis
-            </DropdownLink>
-            <DropdownLink
-                color="#1f1f1f;"
-                ripple="light"
-                onClick={_event => props.setFilter("E-sport")}>
-                E-Sport
-            </DropdownLink>
-            <DropdownLink
-                color="#1f1f1f;"
-                ripple="light"
-                onClick={_event => props.setFilter("Ping-Pong")}
-            >
-                Ping-Pong
-            </DropdownLink>
-        </Dropdown>
-        </NavLink>
+
+        <a className="false false px-5 py-4 flex gap-1 items-center text-2xl uppercase font-medium leading text-white rounded-lg">
+            <div><a
+                className="false false flex gap-1 items-center text-xs uppercase font-medium leading text-white rounded-lg">
+                <div>
+                    <div className="dropdown">
+                        <button className="false flex items-center justify-center gap-1 rounded-lg font-bold outline-none capitalize tracking-wider focus:outline-none transition-all duration-300 rounded py-3 pl-8 pr-6 text-2xl leading-relaxed text-white dropbtn"
+                                type="button" aria-expanded="false">Sports<span
+                            className="material-icons text-lg leading-none align-middle">arrow_drop_down</span></button>
+                        <div className="dropdown-content">
+                            <a onClick={_event => props.setFilter("tennis")}>Tennis</a>
+                            <a onClick={_event => props.setFilter("E-sport")}>E-sport</a>
+                            <a onClick={_event => props.setFilter("Ping-Pong")}>Ping-Pong</a>
+                        </div>
+                    </div>
+                </div>
+            </a></div>
+        </a>
+
     )
 }
 
