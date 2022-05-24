@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {apiGet} from "../../data/dataHandler";
+import {apiGet, apiGetJwt, apiGetWithJwt} from "../../data/dataHandler";
 import MatchPair from "../contentTools/MatchPair";
 const InvestPage = (props) => {
     const [data, setData] = useState([])
@@ -10,20 +10,22 @@ const InvestPage = (props) => {
     let sportCategories = ["tennis", "E-sport", "Ping-Pong"];
     let officeCategories = ["BetterBet", "Esport", "MegaGame", "UniBet"];
     // get the data from db\
-    let filter = props.filter;
+    let filter = props.filter;ű
+    let jwtToken = window.localStorage.getItem("token");
+
     useEffect(() => {
         if (filter != null){
             if (sportCategories.includes(filter)){
-                apiGet(`search-sport/${filter}`)
+                apiGetWithJwt(`search-sport/${filter}`, jwtToken)
                     .then(r => setData(r))
             }
             else if (officeCategories.includes(filter)){
-                apiGet(`search-office/${filter}`)
+                apiGetWithJwt(`search-office/${filter}`, jwtToken )
                     .then(r => setData(r))
             }
         }
         else {
-            apiGet("/match-pairs")
+            apiGetWithJwt("/match-pairs", jwtToken)
                 .then(r => {setData(r)});
         }
     },[filter])
@@ -35,8 +37,6 @@ const InvestPage = (props) => {
     function getGuestInvestData(val){
         setInvestGuestText(val.target.value);
     }
-
-    console.log(data)
     return (
 
         <div className="invest-page-container">

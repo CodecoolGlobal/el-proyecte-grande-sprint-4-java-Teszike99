@@ -20,3 +20,14 @@ export async function apiPost(url, payload) {
 
     }
 }
+
+export async function apiGetWithJwt(url, jwt) {
+    let response = await fetch(url, {
+        method: "GET",
+        headers: {"Content-type": "application/json", "Authorization": "Bearer " +jwt},
+    });
+    if (response.status === 200) {
+        let data = response.json();
+        return data;
+    }
+}

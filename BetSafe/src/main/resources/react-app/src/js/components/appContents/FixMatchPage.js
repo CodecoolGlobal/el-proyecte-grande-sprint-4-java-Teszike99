@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {apiGet} from "../../data/dataHandler";
+import {apiGet, apiGetWithJwt} from "../../data/dataHandler";
 import MatchPair from "../contentTools/MatchPair";
 
 const FixMatchPage = (props) => {
@@ -9,20 +9,21 @@ const FixMatchPage = (props) => {
     let sportCategories = ["tennis", "E-sport", "Ping-Pong"];
     let officeCategories = ["BetterBet", "Esport", "MegaGame", "UniBet"];
     let filter = props.filter;
+    let jwtToken = window.localStorage.getItem("token");
 
     useEffect(() => {
         if (filter != null){
             if (sportCategories.includes(filter)){
-                apiGet(`search-sport/${filter}`)
+                apiGetWithJwt(`search-sport/${filter}`, jwtToken)
                     .then(r => setData(r))
             }
             else if (officeCategories.includes(filter)){
-                apiGet(`search-office/${filter}`)
+                apiGetWithJwt(`search-office/${filter}`, jwtToken)
                     .then(r => setData(r))
             }
         }
         else {
-            apiGet("/fix-match-pairs")
+            apiGetWithJwt("/fix-match-pairs", jwtToken)
                 .then(r => {setData(r)});
         }
     },[filter])
