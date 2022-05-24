@@ -12,7 +12,6 @@ const registerButtonClassName = "register-button"
  const Header = (props) => {
      return (
          <div className="header">
-             <img className="image-header" id="bats1" src={batsImage} alt=''/>
              <img className="image-header" id="batman" src={batmanImage} alt=''/>
              <img className="image-header" id="bat_title" src={image} alt=''/>
              <b className="sub-title">Live your life, free from risk</b>

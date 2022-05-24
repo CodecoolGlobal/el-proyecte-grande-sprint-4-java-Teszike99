@@ -12,9 +12,9 @@ const User = (props) => {
                             className="material-icons undefined undefined leading-none">account_circle</span></button>
                         <div className="dropdown-content">
                             {props.currentUser ?
-                                <p>
+                                <a>
                                     {props.currentUser}
-                                </p>
+                                </a>
                                 :
                                 <p>
                                     <a href="/authenticate">Login</a>
