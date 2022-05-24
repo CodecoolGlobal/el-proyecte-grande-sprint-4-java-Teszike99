@@ -26,7 +26,9 @@ export default function Login(props) {
 
     function setUpLogin(token) {
         if(token) {
-            window.localStorage.setItem("token", token);
+            console.log(token.token)
+            window.localStorage.setItem("token", token.token);
+            console.log(window.localStorage.getItem("token"))
             props.setCurrentUser(username);
         }
         else {
