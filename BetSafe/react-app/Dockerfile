@@ -4,7 +4,9 @@ FROM node:12.18.1
 WORKDIR /app
 COPY package-lock.json ./
 COPY package.json ./
+
+RUN npm ci
+
 COPY . ./
-RUN npm install
 
 CMD ["npm", "start"]

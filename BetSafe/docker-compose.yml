@@ -28,9 +28,10 @@ services:
     ports:
       - "8080:8080"
 
-  # frontend:
-  #   image: frontend-betsafe
-  #   ports:
-  #     - "3000:3000"
+  frontend:
+    build:
+      context: ./react-app
+    ports:
+      - "3000:3000"
 volumes:
   db-data:
