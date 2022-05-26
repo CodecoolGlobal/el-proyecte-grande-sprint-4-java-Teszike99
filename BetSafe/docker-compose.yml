@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  db:
+    image: 'postgres:latest'
+    container_name: db
+    environment:
+      - postgres_db=betsafe
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    volumes:
+      - db-data:/war/lib/postgresql
+    ports:
+      - "5432"
+
+  backend:
+    image: backend-betsafe:v9
+    depends_on:
+      - db
+    environment:
+      spring.datasource.url:jdbc: jdbc:postgresql://db:5432/betsafe
+      spring.datasource.username: compose-postgres
+      spring.datasource.password: compose-postgres
+      spring.jpa.hibernate.ddl-auto: create
+
+    ports:
+      - "8080:8080"
+
+  frontend:
+    image: frontend-betsafe
+    ports:
+      - "3000:3000"
+volumes:
+  db-data:
