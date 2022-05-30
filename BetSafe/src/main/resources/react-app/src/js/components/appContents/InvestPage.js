@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {apiGet, apiGetJwt, apiGetWithJwt} from "../../data/dataHandler";
+import {apiGetWithJwt} from "../../data/dataHandler";
 import MatchPair from "../contentTools/MatchPair";
 const InvestPage = (props) => {
     const [data, setData] = useState([])
@@ -10,23 +10,23 @@ const InvestPage = (props) => {
     let sportCategories = ["tennis", "E-sport", "Ping-Pong"];
     let officeCategories = ["BetterBet", "Esport", "MegaGame", "UniBet"];
     // get the data from db\
-    let filter = props.filter;ű
+    let filter = props.filter;
     let jwtToken = window.localStorage.getItem("token");
 
     useEffect(() => {
         if (filter != null){
             if (sportCategories.includes(filter)){
                 apiGetWithJwt(`search-sport/${filter}`, jwtToken)
-                    .then(r => setData(r))
+                    .then(r => setData(r));
             }
             else if (officeCategories.includes(filter)){
                 apiGetWithJwt(`search-office/${filter}`, jwtToken )
-                    .then(r => setData(r))
+                    .then(r => setData(r));
             }
         }
         else {
             apiGetWithJwt("/match-pairs", jwtToken)
-                .then(r => {setData(r)});
+                .then(r => setData(r));
         }
     },[filter])
     // get the input values

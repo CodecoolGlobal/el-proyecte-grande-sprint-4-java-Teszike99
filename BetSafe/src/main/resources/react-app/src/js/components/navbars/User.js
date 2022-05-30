@@ -11,15 +11,15 @@ const User = (props) => {
                         <button className="false false px-5 py-4 flex gap-1 items-center text-2xl uppercase font-medium leading text-white rounded-lg nav-direct"><span
                             className="material-icons undefined undefined leading-none">account_circle</span></button>
                         <div className="dropdown-content">
-                            {props.currentUser ?
+                            {window.localStorage.getItem("username") ?
                                 <a>
-                                    {props.currentUser}
+                                    {window.localStorage.getItem("username")}
                                 </a>
                                 :
                                 <p>
                                     <a href="/authenticate">Login</a>
                                 </p>}
-                            {props.currentUser ?
+                            {window.localStorage.getItem("username") ?
                                 <p><a onClick={() => {
                                     props.logOut();
                                 }}>Log out</a></p>

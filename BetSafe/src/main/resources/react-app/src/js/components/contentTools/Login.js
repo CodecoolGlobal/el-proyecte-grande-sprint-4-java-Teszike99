@@ -7,6 +7,7 @@ export default function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
 
     const handleUsername = function(event) {
@@ -26,10 +27,10 @@ export default function Login(props) {
 
     function setUpLogin(token) {
         if(token) {
-            console.log(token.token)
             window.localStorage.setItem("token", token.token);
-            console.log(window.localStorage.getItem("token"))
+            window.localStorage.setItem("username", username);
             props.setCurrentUser(username);
+            navigate("/");
         }
         else {
             setError("Failed to log in.")

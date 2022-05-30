@@ -16,24 +16,19 @@ import Registration from "./components/contentTools/Registration";
 function App() {
 
     let [filter, setFilter] = useState(null);
-
-    const [currentUser, setCurrentUser] = useState("");
+    const [currentUser, setCurrentUser] = useState(window.localStorage.getItem("username"));
 
     const logOut = function() {
         window.localStorage.removeItem("token");
+        window.localStorage.removeItem("username");
+        console.log("valami")
         setCurrentUser("");
-        return <Navigate to="/" />;
+        //return <Navigate to="/" />
     }
-
-    const SignInWrapper = ({ children, currentUser }) => {
-        return currentUser ? <Navigate to="/" replace /> : children;
-    };
-
-
 
   return (
       <div className="App">
-          <Header logOut={logOut} currentUser={currentUser} />
+          <Header/>
           <BrowserRouter>
               <TopNavbar setFilter={setFilter} logOut={logOut} currentUser={currentUser} />
               <Routes>
@@ -41,9 +36,7 @@ function App() {
                   <Route exact path="/invest-page" element={<InvestPage filter={filter}/>}/>
                   <Route exact path="/fix-match-page" element={<FixMatchPage filter={filter}/>}/>
                   <Route exact path="/register" element={<Registration/>}/>
-                  <Route exact path="/authenticate" element={<SignInWrapper currentUser={currentUser}>
-                      <Login setCurrentUser={setCurrentUser}/>
-                  </SignInWrapper>}/>
+                  <Route exact path="/authenticate" element={<Login setCurrentUser={setCurrentUser}/>}/>
               </Routes>
           </BrowserRouter>
       </div>

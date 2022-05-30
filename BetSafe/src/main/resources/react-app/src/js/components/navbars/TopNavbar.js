@@ -1,7 +1,6 @@
 import Sports from "./Sports";
 import Offices from "./Offices";
 import User from "./User"
-import Registration from "../contentTools/Registration";
 
 const TopNavbar = (props) => {
 

@@ -1,15 +1,8 @@
-import Button from '../contentTools/Button';
-import {Link} from "react-router-dom";
 import image from "../../../images/bat.png";
 import batmanImage from "../../../images/batman.png";
-import batsImage from "../../../images/bats.png";
 
-const loginButtonTitle = "Login"
-const loginButtonClassName = "login-button"
-const registerButtonTitle = "Create account"
-const registerButtonClassName = "register-button"
 
- const Header = (props) => {
+ const Header = () => {
      return (
          <div className="header">
              <img className="image-header" id="batman" src={batmanImage} alt=''/>

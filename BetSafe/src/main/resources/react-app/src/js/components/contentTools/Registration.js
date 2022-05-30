@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 async function registerUser(user) {
     return fetch('/register', {
@@ -23,6 +24,7 @@ export default function Registration() {
     const handlePassword = function(event) {
         setPassword(event.target.value)
     }
+    const navigate = useNavigate();
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -35,6 +37,8 @@ export default function Registration() {
         }
         else {
             setMessage("Successful registration");
+            navigate("/authenticate")
+
 
         }
     }
