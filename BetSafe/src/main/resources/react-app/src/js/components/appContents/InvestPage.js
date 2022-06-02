@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import {apiGetWithJwt} from "../../data/dataHandler";
 import MatchPair from "../contentTools/MatchPair";
+import {useNavigate} from "react-router-dom";
+
 const InvestPage = (props) => {
     const [data, setData] = useState([])
     const [investHomeText, setInvestHomeText] = useState(0);
@@ -12,21 +14,22 @@ const InvestPage = (props) => {
     // get the data from db\
     let filter = props.filter;
     let jwtToken = window.localStorage.getItem("token");
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (filter != null){
             if (sportCategories.includes(filter)){
                 apiGetWithJwt(`search-sport/${filter}`, jwtToken)
-                    .then(r => setData(r));
+                    .then(r => handleAuthentication(r));
             }
             else if (officeCategories.includes(filter)){
                 apiGetWithJwt(`search-office/${filter}`, jwtToken )
-                    .then(r => setData(r));
+                    .then(r => handleAuthentication(r));
             }
         }
         else {
             apiGetWithJwt("/match-pairs", jwtToken)
-                .then(r => setData(r));
+                .then(r => handleAuthentication(r));
         }
     },[filter])
     // get the input values
@@ -37,6 +40,16 @@ const InvestPage = (props) => {
     function getGuestInvestData(val){
         setInvestGuestText(val.target.value);
     }
+
+    function handleAuthentication(response) {
+        if (response===401) {
+            navigate("/authenticate")
+        }
+        else {
+            setData(response)
+        }
+    }
+
     return (
 
         <div className="invest-page-container">

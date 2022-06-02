@@ -30,4 +30,7 @@ export async function apiGetWithJwt(url, jwt) {
         let data = response.json();
         return data;
     }
+    else {
+        return response.status;
+    }
 }

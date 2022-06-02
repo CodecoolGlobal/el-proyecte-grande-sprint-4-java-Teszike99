@@ -19,7 +19,7 @@ const User = (props) => {
                                 <p>
                                     <a href="/authenticate">Login</a>
                                 </p>}
-                            {window.localStorage.getItem("username") ?
+                                    {window.localStorage.getItem("username") ?
                                 <p><a onClick={() => {
                                     props.logOut();
                                 }}>Log out</a></p>
