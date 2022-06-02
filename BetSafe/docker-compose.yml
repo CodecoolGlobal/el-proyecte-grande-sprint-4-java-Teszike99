@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  db:
+    image: 'postgres:latest'
+    container_name: db
+    environment:
+      - POSTGRES_DB=betsafe
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    volumes:
+      - db-data:/var/lib/postgresql
+    ports:
+      - "5432"
+
+  backend:
+    build:
+      context: .
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=betsafe
+      - DB_USER_NAME=compose-postgres
+      - DB_PASSWORD=compose-postgres
+      - HIBERNATE_MODE=create
+
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./react-app
+    ports:
+      - "3000:3000"
+volumes:
+  db-data:
