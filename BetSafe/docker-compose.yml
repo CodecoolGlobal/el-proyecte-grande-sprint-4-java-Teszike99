@@ -13,6 +13,7 @@ services:
       - "5432"
 
   backend:
+    container_name: server
     build:
       context: .
     depends_on:
@@ -23,12 +24,14 @@ services:
       - DB_NAME=betsafe
       - DB_USER_NAME=compose-postgres
       - DB_PASSWORD=compose-postgres
-      - HIBERNATE_MODE=create
+      - HIBERNATE_MODE=update
+      - JWT_SECRET=g+pt9/RUMWQjSTujfGnpMtmu0mepDWnqjEmkI6QzkQfTRdJTLp7T1C/bLnPJldgrW4HVrMRbtiF14GdTWcC6fg==
 
     ports:
       - "8080:8080"
 
   frontend:
+    container_name: frontend
     build:
       context: ./react-app
     ports:
